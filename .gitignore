@@ -1,0 +1,12 @@
+.DS_Store
+Thumbs.db
+*.log
+.tmp/
+tmp/
+node_modules/
+dist/
+.agents/
+.codex/
+qa-*.png
+assets/sis-hero-smart-infrastructure.png
+docs/sis-website-concept.png
