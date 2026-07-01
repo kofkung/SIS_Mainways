@@ -607,6 +607,7 @@ function setupProductExplorer() {
           previewImg.hidden = true;
           previewFallback.hidden = false;
           previewFallback.textContent = type.product.slice(0, 2).toUpperCase();
+          previewImg.onerror = null;
         };
         previewEyebrow.textContent = `${cat.name} · ${sub.name}`;
         previewName.textContent = type.product;
@@ -683,4 +684,8 @@ function boot() {
   updateScrollEffects();
 }
 
-boot();
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", boot);
+} else {
+  boot();
+}
