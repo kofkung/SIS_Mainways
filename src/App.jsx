@@ -746,21 +746,17 @@ function ProductsPage({ productCat }) {
                       ) : (
                         <span className="product-card-icon">{active.label[0]}</span>
                       )}
-                      <div className="product-card-overlay">
-                        <span className="product-overlay-model">{product.model}</span>
-                        <span className="product-overlay-name">{product.name}</span>
-                        <span className="product-overlay-btn">
-                          View on iBASE
-                          <svg aria-hidden="true" viewBox="0 0 24 24" width="14" height="14">
-                            <path d="M7 17 17 7" />
-                            <path d="M7 7h10v10" />
-                          </svg>
-                        </span>
-                      </div>
                     </div>
                     <div className="product-card-body">
-                      <h2>{product.name}</h2>
-                      <p>{product.desc}</p>
+                      <h3 className="product-model">{product.model}</h3>
+                      <p className="product-desc">{product.desc}</p>
+                      <span className="product-readmore">
+                        Read More
+                        <svg aria-hidden="true" viewBox="0 0 24 24" width="14" height="14">
+                          <path d="M5 12h13" />
+                          <path d="m13 6 6 6-6 6" />
+                        </svg>
+                      </span>
                     </div>
                   </a>
                 </article>
