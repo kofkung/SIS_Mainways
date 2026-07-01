@@ -3,7 +3,7 @@ services:
     name: sis-mainways
     runtime: static
     repo: https://github.com/kofkung/SIS_Mainways
-    branch: master
+    branch: main
     buildCommand: echo "No build step required"
     staticPublishPath: .
     autoDeployTrigger: commit
