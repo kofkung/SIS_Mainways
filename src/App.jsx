@@ -590,9 +590,9 @@ function ContactPage({ formStatus, onSubmit }) {
               required
             >
               <option value="general">Contact Services</option>
-              <option value="product">สนใจ Products</option>
+              <option value="product">Ask for Products</option>
               <option value="support">Support</option>
-              <option value="other">อื่นๆ</option>
+              <option value="other">Other</option>
             </select>
           </label>
 
