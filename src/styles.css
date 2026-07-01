@@ -10,7 +10,7 @@ body {
   margin: 0;
   min-width: 320px;
   overflow-x: clip;
-  scroll-behavior: auto;
+  scroll-behavior: smooth;
 }
 
 html {
@@ -296,6 +296,12 @@ img {
 
 .page-shell {
   min-height: 100vh;
+  animation: fadeIn 0.4s var(--ease-out);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 .hero {
@@ -329,6 +335,12 @@ img {
   object-fit: cover;
   object-position: center;
   filter: saturate(0.95) contrast(1.02);
+  animation: heroZoom 12s ease-out forwards;
+}
+
+@keyframes heroZoom {
+  from { transform: scale(1.08); }
+  to   { transform: scale(1); }
 }
 
 .hero-copy {
@@ -457,7 +469,7 @@ img {
 .btn:focus-visible,
 .outline-button:hover,
 .outline-button:focus-visible {
-  transform: translateY(calc(var(--space-2xs) * -1));
+  transform: translateY(calc(var(--space-2xs) * -1)) scale(1.02);
 }
 
 .btn:hover::after,
@@ -511,6 +523,12 @@ img {
   fill: none;
   stroke-linecap: round;
   stroke-linejoin: round;
+  transition: transform var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
+}
+
+.feature-item:hover .feature-icon {
+  transform: scale(1.12);
+  color: var(--color-blue-strong);
 }
 
 .feature-item h2 {
@@ -664,8 +682,15 @@ img {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: linear-gradient(110deg, transparent 0% 30%, oklch(99% 0.018 232 / 6%) 45%, transparent 55% 100%);
+  background: linear-gradient(110deg, transparent 0% 30%, oklch(99% 0.018 232 / 8%) 45%, transparent 55% 100%);
+  background-size: 200% 100%;
+  animation: shimmer 6s ease-in-out infinite;
   pointer-events: none;
+}
+
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
 }
 
 .glass-card > *,
@@ -915,6 +940,12 @@ img {
   border-radius: var(--radius-md);
   box-shadow: 0 0 40px oklch(58% 0.205 253 / 4%);
   backdrop-filter: blur(16px);
+  transition: transform var(--dur-med) var(--ease-out), box-shadow var(--dur-med) var(--ease-out);
+}
+
+.process-track article:hover {
+  transform: translateY(calc(var(--space-2xs) * -1));
+  box-shadow: 0 0 60px oklch(58% 0.205 253 / 10%);
 }
 
 .process-track span {
@@ -928,6 +959,13 @@ img {
   border-radius: var(--radius-pill);
   font-size: var(--text-xs);
   font-weight: 600;
+  transition: background var(--dur-med) var(--ease-out), color var(--dur-med) var(--ease-out), border-color var(--dur-med) var(--ease-out);
+}
+
+.process-track article:hover span {
+  background: var(--color-blue);
+  color: var(--color-ink);
+  border-color: var(--color-blue);
 }
 
 .process-track strong {
@@ -1289,6 +1327,24 @@ img {
   .filter-tabs {
     width: calc(100% - 24px);
   }
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-line);
+  border-radius: var(--radius-pill);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-line-strong);
 }
 
 @media (prefers-reduced-motion: reduce) {
