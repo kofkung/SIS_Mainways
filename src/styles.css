@@ -1061,6 +1061,46 @@ img {
   font-weight: 600;
 }
 
+.contact-form select {
+  width: 100%;
+  min-height: 48px;
+  padding: 13px var(--space-md);
+  padding-right: 40px;
+  color: var(--color-ink);
+  background: var(--color-glass);
+  border: var(--rule-thin) solid var(--color-line);
+  border-radius: var(--radius-sm);
+  outline: var(--rule-medium) solid transparent;
+  outline-offset: var(--space-2xs);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  cursor: pointer;
+  transition:
+    background-color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c8d8e8' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+}
+
+.contact-form select:hover {
+  border-color: var(--color-line-strong);
+}
+
+.contact-form select:focus {
+  border-color: var(--color-blue);
+  box-shadow: 0 0 0 var(--space-2xs) var(--color-focus), 0 0 30px oklch(58% 0.205 253 / 15%);
+  background: oklch(26% 0.104 248 / 65%);
+}
+
+.contact-form select option {
+  background: oklch(22% 0.087 248 / 98%);
+  color: var(--color-ink);
+}
+
 .contact-form input,
 .contact-form textarea {
   width: 100%;

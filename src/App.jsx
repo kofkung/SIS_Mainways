@@ -437,6 +437,8 @@ function ProjectsPage() {
 }
 
 function ContactPage({ formStatus, onSubmit }) {
+  const [topic, setTopic] = useState("general");
+
   return (
     <PageFrame
       kicker="Contact"
@@ -467,6 +469,50 @@ function ContactPage({ formStatus, onSubmit }) {
         </div>
         <form className="contact-form reveal" onSubmit={onSubmit}>
           <label>
+            Subject
+            <select
+              className="contact-select"
+              value={topic}
+              onChange={(e) => setTopic(e.target.value)}
+              required
+            >
+              <option value="general">Contact Services</option>
+              <option value="product">สนใจ Products</option>
+              <option value="support">Support</option>
+              <option value="other">อื่นๆ</option>
+            </select>
+          </label>
+
+          {topic === "product" ? (
+            <>
+              <label>
+                Product interested
+                <select className="contact-select" name="product" required>
+                  <option value="">Select product...</option>
+                  <option value="gate">Fare Gate Systems</option>
+                  <option value="afc">AFC Integration</option>
+                  <option value="field">Field Execution</option>
+                </select>
+              </label>
+              <label>
+                Company
+                <input name="company" type="text" required />
+              </label>
+            </>
+          ) : topic === "support" ? (
+            <>
+              <label>
+                Station / Location
+                <input name="station" type="text" placeholder="e.g. MRT Bang Sue" required />
+              </label>
+              <label>
+                Device
+                <input name="device" type="text" placeholder="e.g. Fare gate #12" />
+              </label>
+            </>
+          ) : null}
+
+          <label>
             Name
             <input name="name" type="text" autoComplete="name" required />
           </label>
@@ -475,8 +521,17 @@ function ContactPage({ formStatus, onSubmit }) {
             <input name="contact" type="text" autoComplete="email" required />
           </label>
           <label>
-            Project detail
-            <textarea name="message" rows="5" required />
+            Messages
+            <textarea
+              name="message"
+              rows={topic === "general" ? 5 : 3}
+              placeholder={
+                topic === "product" ? "Describe the product you are interested in..."
+                  : topic === "support" ? "Describe the issue at the station..."
+                  : "How can we help you?"
+              }
+              required
+            />
           </label>
           <button className="btn btn-primary" type="submit">
             Send project note
