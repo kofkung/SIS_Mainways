@@ -89,38 +89,68 @@ const portfolio = [
 const filterTabs = ["All Projects", "Fare Gate", "Station Device", "Integration", "AFC System"];
 const processSteps = ["Planning", "Engineering", "Implementation", "Handover"];
 
+const imgBase = "https://www.ibase.com.tw/uploads/images/products/Small_255x170px/small_";
+
 const productCategories = [
   {
-    id: "embedded",
+    id: "motherboard",
     label: "Motherboard & SBC",
     catUrl: "https://www.ibase.com.tw/en/product/category/Embedded_Computing/Motherboard",
     products: [
-      { model: "MI1005", name: "Mini-ITX Motherboard", desc: "Intel Core Ultra 200H/200U embedded board for AFC controllers and station devices.", img: "https://www.ibase.com.tw/uploads/images/products/Small_255x170px/small_MI1005.png" },
-      { model: "PI800", name: "PICO-ITX Motherboard", desc: "Ultra-compact Intel Atom x7000RE board for space-constrained fare gate control.", img: "https://www.ibase.com.tw/uploads/images/products/Small_255x170px/small_PI800.png" },
-      { model: "IB996", name: "Full-Size CPU Card", desc: "High-performance CPU card for central station AFC server and数据处理 units.", img: "https://www.ibase.com.tw/uploads/images/products/Small_255x170px/small_IB996.png" },
-      { model: "IB962", name: "3.5\" Single Board Computer", desc: "Intel Core Ultra 7/5 mobile processor SBC for trackside and tunnel environments.", img: "" },
+      { model: "MI1005", name: "Mini-ITX Motherboard", desc: "Intel Core Ultra 200H/200U for AFC controllers and station devices.", img: imgBase + "MI1005.png" },
+      { model: "MBB1005", name: "ATX Motherboard", desc: "Intel Core Ultra 200S for central station AFC servers.", img: imgBase + "MBB1005.png" },
+      { model: "MB998", name: "Micro ATX Motherboard", desc: "Intel Core 200E/200PE for medium-footprint control systems.", img: imgBase + "MB998.png" },
+      { model: "PI800", name: "PICO-ITX Motherboard", desc: "Intel Atom x7000RE ultra-compact board for fare gate control.", img: imgBase + "PI800.png" },
+      { model: "IB962", name: '3.5" Single Board Computer', desc: "Intel Core Ultra 7/5 for trackside and tunnel environments.", img: imgBase + "IB962.png" },
+      { model: "IB96W", name: '3.5" SBC Wide-Temp', desc: "13th Gen Intel Core wide-temperature SBC for extreme conditions.", img: imgBase + "IB96W.png" },
+      { model: "IB200", name: '2.5" Single Board Computer', desc: "AMD Ryzen Embedded R2000 for compact embedded systems.", img: imgBase + "IB200.png" },
+      { model: "IB996", name: "Full-Size CPU Card", desc: "14th/13th/12th Gen Intel Core for central AFC processing.", img: imgBase + "IB996.png" },
+      { model: "ET981", name: "COM Express CPU Module", desc: "Type 6 module with 13th Gen Intel Core P-Series processor.", img: imgBase + "ET981.png" },
+    ],
+  },
+  {
+    id: "system",
+    label: "Industrial System",
+    catUrl: "https://www.ibase.com.tw/en/product/category/Edge_AI___Intelligent_System",
+    products: [
+      { model: "EC3020", name: "Edge AI Computer", desc: "NVIDIA Jetson Orin NX/Nano for CCTV passenger counting and station analytics.", img: imgBase + "EC3020.png" },
+      { model: "EC3000", name: "Edge AI Computer", desc: "Jetson Orin platform for real-time security and crowd analysis.", img: imgBase + "EC3000.png" },
+      { model: "ES1002", name: "Edge AI Server", desc: "AMD EPYC Embedded 8004 for high-throughput AI inferencing.", img: imgBase + "ES1002.png" },
+      { model: "AGS104T", name: "IoT Edge Gateway", desc: "Ultra-compact Intel Atom gateway for AFC device aggregation.", img: imgBase + "AGS104T.png" },
+      { model: "ACS413", name: "Compact Embedded System", desc: "13th Gen Intel Core for real-time station supervision.", img: imgBase + "ACS413.png" },
+      { model: "ARS200", name: "Ruggedized System", desc: "Waterproof IP65 outdoor computer for trackside environments.", img: imgBase + "ARS200.png" },
+      { model: "AES100", name: "Expandable System", desc: "14th/13th Gen Intel Core i9/i7 for central data concentrators.", img: imgBase + "AES100.png" },
+      { model: "AMI242", name: "Fanless Expandable System", desc: "Compact fanless system for station device control.", img: imgBase + "AMI242.png" },
+      { model: "AMS210", name: "Automatic Control System", desc: "9th/8th Gen Intel Core for automated fare gate operations.", img: imgBase + "AMS210.png" },
+      { model: "ASB100-PI800", name: "Palm-Sized System", desc: "Intel Atom x7433RE palm-sized system for space-limited kiosks.", img: imgBase + "ASB100-PI800.png" },
+    ],
+  },
+  {
+    id: "signage",
+    label: "Signage & Network",
+    catUrl: "https://www.ibase.com.tw/en/product/category/Digital_Signage_Player",
+    products: [
+      { model: "SI-212-N", name: "Digital Signage Player", desc: "Fanless 2x HDMI player for PIDS on MRT platforms.", img: imgBase + "SI-212-N.png" },
+      { model: "SI-121-N", name: "Entry Signage Player", desc: "Intel Core N-Series single HDMI for information displays.", img: imgBase + "SI-121-N.png" },
+      { model: "SI-664-N", name: "Performance Signage Player", desc: "Intel Core Ultra 4x HDMI for multi-display PIS systems.", img: imgBase + "SI-664-N.png" },
+      { model: "SE-603-N", name: "Fanless Signage Player", desc: "11th Gen Intel Core for reliable passenger information.", img: imgBase + "SE-603-N.png" },
+      { model: "SW-602-N", name: "Waterproof Signage Player", desc: "IP-rated outdoor signage player for platform displays.", img: imgBase + "SW-602-N.png" },
+      { model: "ISR215", name: "ARM Signage Player", desc: "NXP i.MX 8M Plus energy-efficient player for digital signage.", img: imgBase + "ISR215.png" },
+      { model: "INA7605", name: "2U Network Appliance", desc: "Dual 5th Gen Xeon with 64 GbE for central station networking.", img: imgBase + "INA7605.png" },
+      { model: "INA3605", name: "1U Network Appliance", desc: "Xeon E-2300 with 16 GbE for station network aggregation.", img: imgBase + "INA3605.png" },
+      { model: "INA2205", name: "Entry 1U Network Appliance", desc: "Intel Atom with 8 GbE for compact station network edge.", img: imgBase + "INA2205.png" },
     ],
   },
   {
     id: "transport",
-    label: "Intelligent Transport",
+    label: "Transportation",
     catUrl: "https://www.ibase.com.tw/en/product/category/Intelligent_Transportation",
     products: [
-      { model: "MPT-R Series", name: "Railway Computer", desc: "EN 50155 certified railway computer for onboard AFC and train-ground communication.", img: "" },
-      { model: "MPT-V Series", name: "In-Vehicle Computer", desc: "E-Mark certified vehicle computer for depot and maintenance yard operations.", img: "" },
-      { model: "MPPC Series", name: "Railway Panel PC", desc: "Railway-grade touch panel for driver and operator interfaces in MRT cabs.", img: "" },
-      { model: "MRD Series", name: "Bar-Type PIS Panel PC", desc: "Ultra-wide bar-type display for passenger information systems on platforms.", img: "" },
-    ],
-  },
-  {
-    id: "ai",
-    label: "Edge AI & System",
-    catUrl: "https://www.ibase.com.tw/en/product/category/Edge_AI___Intelligent_System",
-    products: [
-      { model: "EC3000", name: "Edge AI Computer", desc: "NVIDIA Jetson Orin NX platform for CCTV passenger counting and station security AI.", img: "https://www.ibase.com.tw/uploads/images/products/Small_255x170px/small_EC3000.png" },
-      { model: "AGS104T", name: "IoT Edge System", desc: "Ultra-compact IoT gateway for AFC device aggregation and remote station monitoring.", img: "https://www.ibase.com.tw/uploads/images/products/Small_255x170px/small_AGS104T.png" },
-      { model: "ACS413", name: "Compact Embedded System", desc: "Advanced compact system for real-time station supervision and data processing.", img: "https://www.ibase.com.tw/uploads/images/products/Small_255x170px/small_ACS413.png" },
-      { model: "ARS200", name: "Ruggedized System", desc: "Waterproof outdoor computer for trackside and exposed station environments.", img: "https://www.ibase.com.tw/uploads/images/products/Small_255x170px/small_ARS200.png" },
+      { model: "MPT-R Series", name: "Railway Computer", desc: "EN 50155 certified for onboard AFC and train-ground communication." },
+      { model: "MPT-V Series", name: "In-Vehicle Computer", desc: "E-Mark certified for depot and maintenance yard operations." },
+      { model: "MPPC Series", name: "Railway Panel PC", desc: "Railway touch panel for driver and operator interfaces in cabs." },
+      { model: "MRD Series", name: "Bar-Type PIS Panel PC", desc: "Ultra-wide display for passenger information on platforms." },
+      { model: "MPT-3100V-AI", name: "AI Transportation System", desc: "ITxPT & E-Mark certified edge AI for intelligent transport." },
     ],
   },
 ];
@@ -475,7 +505,7 @@ function ProjectsPage() {
 }
 
 function ProductsPage() {
-  const [activeCat, setActiveCat] = useState("embedded");
+  const [activeCat, setActiveCat] = useState("motherboard");
   const [failedImgs, setFailedImgs] = useState({});
 
   const handleImgError = (model) => {
@@ -489,7 +519,7 @@ function ProductsPage() {
       className="product-page"
       kicker="Partner products"
       title="iBASE Industrial Computing"
-      text="Industrial motherboards, railway computers, edge AI systems, and IoT gateways from iBASE Technology — deployed in AFC systems across the MRT network."
+      text="Industrial motherboards, edge AI systems, railway computers, signage players, and network appliances from iBASE Technology — deployed across the MRT network."
     >
       <section className="section product-section">
         <div className="product-tabs" role="tablist">
@@ -510,7 +540,7 @@ function ProductsPage() {
         <div className="product-grid">
           {active.products.map((product) => (
             <article className="product-card reveal" key={product.model}>
-              <a href={active.catUrl} target="_blank" rel="noopener noreferrer" className="product-card-fig">
+              <div className="product-card-fig">
                 {product.img && !failedImgs[product.model] ? (
                   <img
                     src={product.img}
@@ -522,14 +552,19 @@ function ProductsPage() {
                   <span className="product-card-icon">{active.label[0]}</span>
                 )}
                 <span className="product-model">{product.model}</span>
-                <span className="product-card-bar">
+                <a
+                  href={active.catUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="product-card-bar"
+                >
                   View on iBASE
                   <svg aria-hidden="true" viewBox="0 0 24 24" width="14" height="14">
                     <path d="M7 17 17 7" />
                     <path d="M7 7h10v10" />
                   </svg>
-                </span>
-              </a>
+                </a>
+              </div>
               <div className="product-card-body">
                 <h2>{product.name}</h2>
                 <p>{product.desc}</p>

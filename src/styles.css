@@ -1354,13 +1354,19 @@ img {
   color: var(--color-ink);
   font-size: var(--text-xs);
   font-weight: 600;
+  text-decoration: none;
   background: var(--gradient-primary);
   transform: translateY(100%);
   transition: transform var(--dur-med) var(--ease-out);
+  cursor: pointer;
 }
 
 .product-card:hover .product-card-bar {
   transform: translateY(0);
+}
+
+.product-card-bar:hover {
+  filter: brightness(1.15);
 }
 
 .product-card-bar svg {
