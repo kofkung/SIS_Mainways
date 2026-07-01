@@ -92,46 +92,35 @@ const processSteps = ["Planning", "Engineering", "Implementation", "Handover"];
 const productCategories = [
   {
     id: "embedded",
-    label: "Embedded Computing",
+    label: "Motherboard & SBC",
+    catUrl: "https://www.ibase.com.tw/en/product/category/Embedded_Computing/Motherboard",
     products: [
-      { model: "MI1005", name: "Mini-ITX Motherboard", desc: "Intel Alder Lake-N embedded board for AFC controllers and station devices.", url: "https://www.ibase.com.tw/en/product/MI1005" },
-      { model: "AMI240", name: "Embedded Motherboard", desc: "Compact embedded motherboard for kiosk and fare gate control units.", url: "https://www.ibase.com.tw/en/product/AMI240" },
-      { model: "CSB200-841", name: "Single Board Computer", desc: "3.5\" SBC with wide temperature range, ideal for trackside and tunnel environments.", url: "https://www.ibase.com.tw/en/product/CSB200-841" },
-      { model: "IB907", name: "CPU Module", desc: "COM Express Type 10 module for modular fare gate system designs.", url: "https://www.ibase.com.tw/en/product/IB907" },
+      { model: "MI1005", name: "Mini-ITX Motherboard", desc: "Intel Core Ultra 200H/200U embedded board for AFC controllers and station devices.", img: "https://www.ibase.com.tw/uploads/images/products/Small_255x170px/small_MI1005.png" },
+      { model: "PI800", name: "PICO-ITX Motherboard", desc: "Ultra-compact Intel Atom x7000RE board for space-constrained fare gate control.", img: "https://www.ibase.com.tw/uploads/images/products/Small_255x170px/small_PI800.png" },
+      { model: "IB996", name: "Full-Size CPU Card", desc: "High-performance CPU card for central station AFC server and数据处理 units.", img: "https://www.ibase.com.tw/uploads/images/products/Small_255x170px/small_IB996.png" },
+      { model: "IB962", name: "3.5\" Single Board Computer", desc: "Intel Core Ultra 7/5 mobile processor SBC for trackside and tunnel environments.", img: "" },
     ],
   },
   {
-    id: "panel",
-    label: "Panel PC",
+    id: "transport",
+    label: "Intelligent Transport",
+    catUrl: "https://www.ibase.com.tw/en/product/category/Intelligent_Transportation",
     products: [
-      { model: "TSC100", name: "Panel PC", desc: "10.1\" industrial touch panel for station operator workstations and service desks.", url: "https://www.ibase.com.tw/en/product/TSC100" },
-      { model: "PDS100", name: "Touch Monitor", desc: "10.1\" rugged touch monitor for passenger-facing information kiosks.", url: "https://www.ibase.com.tw/en/product/PDS100" },
-      { model: "PPC100", name: "Performance Panel PC", desc: "Intel-powered panel PC for real-time station supervision dashboards.", url: "https://www.ibase.com.tw/en/product/PPC100" },
+      { model: "MPT-R Series", name: "Railway Computer", desc: "EN 50155 certified railway computer for onboard AFC and train-ground communication.", img: "" },
+      { model: "MPT-V Series", name: "In-Vehicle Computer", desc: "E-Mark certified vehicle computer for depot and maintenance yard operations.", img: "" },
+      { model: "MPPC Series", name: "Railway Panel PC", desc: "Railway-grade touch panel for driver and operator interfaces in MRT cabs.", img: "" },
+      { model: "MRD Series", name: "Bar-Type PIS Panel PC", desc: "Ultra-wide bar-type display for passenger information systems on platforms.", img: "" },
     ],
   },
   {
     id: "ai",
-    label: "AI & Edge Computing",
+    label: "Edge AI & System",
+    catUrl: "https://www.ibase.com.tw/en/product/category/Edge_AI___Intelligent_System",
     products: [
-      { model: "IB838", name: "AI Edge Inference System", desc: "Edge AI platform for CCTV passenger counting and station security analytics.", url: "https://www.ibase.com.tw/en/product/IB838" },
-      { model: "AMI250", name: "AI Motherboard", desc: "Industrial motherboard with NPU acceleration for real-time fare gate anomaly detection.", url: "https://www.ibase.com.tw/en/product/AMI250" },
-    ],
-  },
-  {
-    id: "iot",
-    label: "IoT & Gateway",
-    products: [
-      { model: "IRU104", name: "Industrial IoT Gateway", desc: "Multi-protocol gateway for AFC device aggregation and remote station monitoring.", url: "https://www.ibase.com.tw/en/product/IRU104" },
-      { model: "IRU84", name: "IoT Controller", desc: "Compact IoT controller for environmental and equipment status sensing in stations.", url: "https://www.ibase.com.tw/en/product/IRU84" },
-    ],
-  },
-  {
-    id: "system",
-    label: "System & Chassis",
-    products: [
-      { model: "FEC100", name: "Fanless Embedded System", desc: "Rugged fanless system for trackside AFC processing and data concentrator units.", url: "https://www.ibase.com.tw/en/product/FEC100" },
-      { model: "MSC100", name: "Digital Signage Player", desc: "Compact media player for PIDS (Passenger Information Display System) on platforms.", url: "https://www.ibase.com.tw/en/product/MSC100" },
-      { model: "RACK3000", name: "Industrial Chassis", desc: "Rackmount chassis for central station AFC server and network equipment.", url: "https://www.ibase.com.tw/en/product/RACK3000" },
+      { model: "EC3000", name: "Edge AI Computer", desc: "NVIDIA Jetson Orin NX platform for CCTV passenger counting and station security AI.", img: "https://www.ibase.com.tw/uploads/images/products/Small_255x170px/small_EC3000.png" },
+      { model: "AGS104T", name: "IoT Edge System", desc: "Ultra-compact IoT gateway for AFC device aggregation and remote station monitoring.", img: "https://www.ibase.com.tw/uploads/images/products/Small_255x170px/small_AGS104T.png" },
+      { model: "ACS413", name: "Compact Embedded System", desc: "Advanced compact system for real-time station supervision and data processing.", img: "https://www.ibase.com.tw/uploads/images/products/Small_255x170px/small_ACS413.png" },
+      { model: "ARS200", name: "Ruggedized System", desc: "Waterproof outdoor computer for trackside and exposed station environments.", img: "https://www.ibase.com.tw/uploads/images/products/Small_255x170px/small_ARS200.png" },
     ],
   },
 ];
@@ -487,13 +476,20 @@ function ProjectsPage() {
 
 function ProductsPage() {
   const [activeCat, setActiveCat] = useState("embedded");
+  const [failedImgs, setFailedImgs] = useState({});
+
+  const handleImgError = (model) => {
+    setFailedImgs((prev) => ({ ...prev, [model]: true }));
+  };
+
+  const active = productCategories.find((c) => c.id === activeCat) || productCategories[0];
 
   return (
     <PageFrame
       className="product-page"
       kicker="Partner products"
       title="iBASE Industrial Computing"
-      text="Industrial-grade motherboards, panel PCs, embedded systems, and IoT gateways from iBASE Technology — deployed in AFC systems across the MRT network."
+      text="Industrial motherboards, railway computers, edge AI systems, and IoT gateways from iBASE Technology — deployed in AFC systems across the MRT network."
     >
       <section className="section product-section">
         <div className="product-tabs" role="tablist">
@@ -511,39 +507,36 @@ function ProductsPage() {
           ))}
         </div>
 
-        {productCategories.map((cat) => (
-          <div
-            key={cat.id}
-            role="tabpanel"
-            hidden={activeCat !== cat.id}
-            className="product-grid"
-          >
-            {cat.products.map((product) => (
-              <article className="product-card reveal" key={product.model}>
-                <div className="product-card-fig">
-                  <span className="product-card-icon">{cat.label[0]}</span>
-                  <span className="product-model">{product.model}</span>
-                </div>
-                <div className="product-card-body">
-                  <h2>{product.name}</h2>
-                  <p>{product.desc}</p>
-                  <a
-                    href={product.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="product-link"
-                  >
-                    View on iBASE
-                    <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16">
-                      <path d="M7 17 17 7" />
-                      <path d="M7 7h10v10" />
-                    </svg>
-                  </a>
-                </div>
-              </article>
-            ))}
-          </div>
-        ))}
+        <div className="product-grid">
+          {active.products.map((product) => (
+            <article className="product-card reveal" key={product.model}>
+              <a href={active.catUrl} target="_blank" rel="noopener noreferrer" className="product-card-fig">
+                {product.img && !failedImgs[product.model] ? (
+                  <img
+                    src={product.img}
+                    alt={product.model}
+                    onError={() => handleImgError(product.model)}
+                    loading="lazy"
+                  />
+                ) : (
+                  <span className="product-card-icon">{active.label[0]}</span>
+                )}
+                <span className="product-model">{product.model}</span>
+                <span className="product-card-bar">
+                  View on iBASE
+                  <svg aria-hidden="true" viewBox="0 0 24 24" width="14" height="14">
+                    <path d="M7 17 17 7" />
+                    <path d="M7 7h10v10" />
+                  </svg>
+                </span>
+              </a>
+              <div className="product-card-body">
+                <h2>{product.name}</h2>
+                <p>{product.desc}</p>
+              </div>
+            </article>
+          ))}
+        </div>
       </section>
     </PageFrame>
   );
