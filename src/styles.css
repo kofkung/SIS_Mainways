@@ -1223,6 +1223,157 @@ img {
   transform: translateY(0);
 }
 
+/* ── Product page ── */
+.product-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-xl);
+}
+
+.product-tab {
+  padding: var(--space-sm) var(--space-lg);
+  color: var(--color-muted);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  background: var(--color-glass);
+  border: var(--rule-thin) solid var(--color-line);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition:
+    color var(--dur-fast) var(--ease-out),
+    background var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out);
+}
+
+.product-tab:hover {
+  color: var(--color-ink);
+  background: var(--color-glass-strong);
+}
+
+.product-tab.is-active {
+  color: var(--color-ink);
+  background: var(--gradient-primary);
+  border-color: transparent;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-md);
+}
+
+.product-card {
+  display: grid;
+  grid-template-rows: 140px minmax(0, 1fr);
+  overflow: hidden;
+  background: linear-gradient(145deg, oklch(26% 0.104 248 / 58%), oklch(22% 0.087 248 / 48%));
+  border: var(--rule-thin) solid oklch(99% 0.018 232 / 14%);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-inner), var(--shadow-soft), 0 0 60px oklch(58% 0.205 253 / 6%);
+  backdrop-filter: blur(24px) saturate(140%);
+  transition:
+    transform var(--dur-med) var(--ease-out),
+    border-color var(--dur-med) var(--ease-out),
+    box-shadow var(--dur-med) var(--ease-out);
+}
+
+.product-card:hover {
+  border-color: var(--color-line-strong);
+  box-shadow: var(--shadow-inner), var(--shadow-lift), 0 0 80px oklch(58% 0.205 253 / 10%);
+}
+
+.product-card-fig {
+  position: relative;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, oklch(30% 0.08 241 / 60%), oklch(22% 0.087 248 / 60%));
+  overflow: hidden;
+}
+
+.product-card-fig::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, oklch(16% 0.071 252 / 60%));
+  pointer-events: none;
+}
+
+.product-card-icon {
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  color: oklch(99% 0.018 232 / 14%);
+  letter-spacing: 0.08em;
+  user-select: none;
+}
+
+.product-model {
+  position: absolute;
+  bottom: var(--space-sm);
+  left: var(--space-md);
+  color: oklch(80% 0.135 217 / 80%);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.product-card-body {
+  position: relative;
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card-body h2 {
+  margin: 0;
+  color: var(--color-ink);
+  font-size: var(--text-lg);
+  line-height: 1.18;
+  font-weight: 600;
+}
+
+.product-card-body p {
+  margin: var(--space-sm) 0 0;
+  color: var(--color-ink-soft);
+  font-size: var(--text-xs);
+  line-height: 1.58;
+  flex: 1;
+}
+
+.product-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  margin-top: var(--space-md);
+  padding: var(--space-2xs) var(--space-sm);
+  color: var(--color-cyan);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  text-decoration: none;
+  border: var(--rule-thin) solid var(--color-line);
+  border-radius: var(--radius-pill);
+  background: var(--color-glass);
+  transition:
+    color var(--dur-fast) var(--ease-out),
+    background var(--dur-fast) var(--ease-out);
+  align-self: flex-start;
+}
+
+.product-link:hover {
+  color: var(--color-ink);
+  background: var(--gradient-primary);
+}
+
+.product-link svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
 @media (max-width: 1100px) {
   :root {
     --text-4xl: 3.16rem;
@@ -1243,7 +1394,8 @@ img {
 
   .feature-rail,
   .portfolio-grid,
-  .process-track {
+  .process-track,
+  .product-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -1359,12 +1511,22 @@ img {
   }
 
   .portfolio-grid,
+  .product-grid,
   .process-track {
     grid-template-columns: minmax(0, 1fr);
   }
 
   .service-row {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .product-tabs {
+    gap: var(--space-2xs);
+  }
+
+  .product-tab {
+    padding: var(--space-xs) var(--space-md);
+    font-size: var(--text-2xs);
   }
 }
 

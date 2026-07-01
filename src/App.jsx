@@ -9,13 +9,14 @@ import job3 from "../assets/services/job3.jpg";
 import job5 from "../assets/services/job5.jpg";
 import job13 from "../assets/services/job13.jpg";
 
-const routes = ["home", "about", "services", "projects", "contact"];
+const routes = ["home", "about", "services", "projects", "products", "contact"];
 
 const navItems = [
   { id: "home", label: "Home" },
   { id: "about", label: "About" },
   { id: "services", label: "Services" },
   { id: "projects", label: "Projects" },
+  { id: "products", label: "Products" },
   { id: "contact", label: "Contact" },
 ];
 
@@ -87,6 +88,53 @@ const portfolio = [
 
 const filterTabs = ["All Projects", "Fare Gate", "Station Device", "Integration", "AFC System"];
 const processSteps = ["Planning", "Engineering", "Implementation", "Handover"];
+
+const productCategories = [
+  {
+    id: "embedded",
+    label: "Embedded Computing",
+    products: [
+      { model: "MI1005", name: "Mini-ITX Motherboard", desc: "Intel Alder Lake-N embedded board for AFC controllers and station devices.", url: "https://www.ibase.com.tw/en/product/MI1005" },
+      { model: "AMI240", name: "Embedded Motherboard", desc: "Compact embedded motherboard for kiosk and fare gate control units.", url: "https://www.ibase.com.tw/en/product/AMI240" },
+      { model: "CSB200-841", name: "Single Board Computer", desc: "3.5\" SBC with wide temperature range, ideal for trackside and tunnel environments.", url: "https://www.ibase.com.tw/en/product/CSB200-841" },
+      { model: "IB907", name: "CPU Module", desc: "COM Express Type 10 module for modular fare gate system designs.", url: "https://www.ibase.com.tw/en/product/IB907" },
+    ],
+  },
+  {
+    id: "panel",
+    label: "Panel PC",
+    products: [
+      { model: "TSC100", name: "Panel PC", desc: "10.1\" industrial touch panel for station operator workstations and service desks.", url: "https://www.ibase.com.tw/en/product/TSC100" },
+      { model: "PDS100", name: "Touch Monitor", desc: "10.1\" rugged touch monitor for passenger-facing information kiosks.", url: "https://www.ibase.com.tw/en/product/PDS100" },
+      { model: "PPC100", name: "Performance Panel PC", desc: "Intel-powered panel PC for real-time station supervision dashboards.", url: "https://www.ibase.com.tw/en/product/PPC100" },
+    ],
+  },
+  {
+    id: "ai",
+    label: "AI & Edge Computing",
+    products: [
+      { model: "IB838", name: "AI Edge Inference System", desc: "Edge AI platform for CCTV passenger counting and station security analytics.", url: "https://www.ibase.com.tw/en/product/IB838" },
+      { model: "AMI250", name: "AI Motherboard", desc: "Industrial motherboard with NPU acceleration for real-time fare gate anomaly detection.", url: "https://www.ibase.com.tw/en/product/AMI250" },
+    ],
+  },
+  {
+    id: "iot",
+    label: "IoT & Gateway",
+    products: [
+      { model: "IRU104", name: "Industrial IoT Gateway", desc: "Multi-protocol gateway for AFC device aggregation and remote station monitoring.", url: "https://www.ibase.com.tw/en/product/IRU104" },
+      { model: "IRU84", name: "IoT Controller", desc: "Compact IoT controller for environmental and equipment status sensing in stations.", url: "https://www.ibase.com.tw/en/product/IRU84" },
+    ],
+  },
+  {
+    id: "system",
+    label: "System & Chassis",
+    products: [
+      { model: "FEC100", name: "Fanless Embedded System", desc: "Rugged fanless system for trackside AFC processing and data concentrator units.", url: "https://www.ibase.com.tw/en/product/FEC100" },
+      { model: "MSC100", name: "Digital Signage Player", desc: "Compact media player for PIDS (Passenger Information Display System) on platforms.", url: "https://www.ibase.com.tw/en/product/MSC100" },
+      { model: "RACK3000", name: "Industrial Chassis", desc: "Rackmount chassis for central station AFC server and network equipment.", url: "https://www.ibase.com.tw/en/product/RACK3000" },
+    ],
+  },
+];
 
 function getRouteFromHash() {
   const id = window.location.hash.replace("#", "").trim();
@@ -185,6 +233,7 @@ function App() {
       about: <AboutPage />,
       services: <ServicesPage />,
       projects: <ProjectsPage />,
+      products: <ProductsPage />,
       contact: <ContactPage formStatus={formStatus} onSubmit={handleContactSubmit} />,
     }[route];
   }, [route, formStatus]);
@@ -432,6 +481,70 @@ function ProjectsPage() {
         ))}
       </section>
       <ProcessSection />
+    </PageFrame>
+  );
+}
+
+function ProductsPage() {
+  const [activeCat, setActiveCat] = useState("embedded");
+
+  return (
+    <PageFrame
+      className="product-page"
+      kicker="Partner products"
+      title="iBASE Industrial Computing"
+      text="Industrial-grade motherboards, panel PCs, embedded systems, and IoT gateways from iBASE Technology — deployed in AFC systems across the MRT network."
+    >
+      <section className="section product-section">
+        <div className="product-tabs" role="tablist">
+          {productCategories.map((cat) => (
+            <button
+              key={cat.id}
+              role="tab"
+              type="button"
+              aria-selected={activeCat === cat.id}
+              className={`product-tab${activeCat === cat.id ? " is-active" : ""}`}
+              onClick={() => setActiveCat(cat.id)}
+            >
+              {cat.label}
+            </button>
+          ))}
+        </div>
+
+        {productCategories.map((cat) => (
+          <div
+            key={cat.id}
+            role="tabpanel"
+            hidden={activeCat !== cat.id}
+            className="product-grid"
+          >
+            {cat.products.map((product) => (
+              <article className="product-card reveal" key={product.model}>
+                <div className="product-card-fig">
+                  <span className="product-card-icon">{cat.label[0]}</span>
+                  <span className="product-model">{product.model}</span>
+                </div>
+                <div className="product-card-body">
+                  <h2>{product.name}</h2>
+                  <p>{product.desc}</p>
+                  <a
+                    href={product.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="product-link"
+                  >
+                    View on iBASE
+                    <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16">
+                      <path d="M7 17 17 7" />
+                      <path d="M7 7h10v10" />
+                    </svg>
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+        ))}
+      </section>
     </PageFrame>
   );
 }
