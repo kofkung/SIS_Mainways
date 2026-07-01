@@ -89,48 +89,50 @@ const portfolio = [
 const filterTabs = ["All Projects", "Fare Gate", "Station Device", "Integration", "AFC System"];
 const processSteps = ["Planning", "Engineering", "Implementation", "Handover"];
 
-const imgBase = "https://www.ibase.com.tw/uploads/images/products/Small_255x170px/small_";
+const ibase = "https://www.ibase.com.tw";
+const img = (file) => `${ibase}/uploads/images/products/Small_255x170px/${file}`;
+const url = (path) => `${ibase}/${path}`;
 
 const productCategories = [
   {
     id: "embedded",
     label: "Embedded Computing",
-    catUrl: "https://www.ibase.com.tw/en/product/category/Embedded_Computing",
     groups: [
       {
         name: "Motherboard",
         products: [
-          { model: "MI1005", name: "Mini-ITX Motherboard", desc: "Intel Core Ultra 200H/200U for AFC controllers and station devices.", img: imgBase + "MI1005.png" },
-          { model: "MBB1005", name: "ATX Motherboard", desc: "Intel Core Ultra 200S for central station AFC servers.", img: imgBase + "MBB1005.png" },
-          { model: "MB998", name: "Micro ATX Motherboard", desc: "Intel Core 200E/200PE for medium-footprint control systems.", img: imgBase + "MB998.png" },
-          { model: "PI800", name: "PICO-ITX Motherboard", desc: "Intel Atom x7000RE ultra-compact for fare gate control.", img: imgBase + "PI800.png" },
+          { model: "MI1005", name: "Mini-ITX Motherboard", desc: "Intel Core Ultra 200H/200U for AFC controllers.", img: img("small_MI1005.png"), url: url("en/product/category/Embedded_Computing/Motherboard/Mini-ITX_Motherboard/MI1005") },
+          { model: "MBB1005", name: "ATX Motherboard", desc: "Intel Core Ultra 200S for central AFC servers.", img: img("small_MBB1005.png"), url: url("en/product/category/Embedded_Computing/Motherboard/ATX_Motherboard/MBB1005") },
+          { model: "MB998", name: "Micro ATX Motherboard", desc: "Intel Core 200E/200PE for control systems.", img: img("small_MB998.png"), url: url("en/product/category/Embedded_Computing/Motherboard/Micro_ATX_Motherboard/MB998") },
+          { model: "PI800", name: "PICO-ITX Motherboard", desc: "Intel Atom x7000RE ultra-compact for fare gates.", img: img("small_PI800.png"), url: url("en/product/category/Embedded_Computing/Motherboard/PICO_ITX_Motherboard/PI800") },
         ],
       },
       {
         name: "Single Board Computer",
         products: [
-          { model: "IB962", name: '3.5" SBC', desc: "Intel Core Ultra 7/5 for trackside and tunnel environments.", img: imgBase + "IB962.png" },
-          { model: "IB96W", name: '3.5" SBC Wide-Temp', desc: "13th Gen Intel Core wide-temperature for extreme conditions.", img: imgBase + "IB96W.png" },
-          { model: "IB200", name: '2.5" SBC', desc: "AMD Ryzen Embedded R2000 for compact embedded systems.", img: imgBase + "IB200.png" },
-          { model: "IBR117", name: '3.5" ARM SBC', desc: "NXP ARM Cortex-A9 i.MX 6 for low-power edge processing." },
-          { model: "IBR215", name: '2.5" ARM SBC', desc: "NXP ARM Cortex-A53 i.MX 8M Plus for AI edge inference." },
+          { model: "IB962", name: '3.5" SBC', desc: "Intel Core Ultra 7/5 for trackside environments.", img: img("small_IB962_.png"), url: url("en/product/category/Embedded_Computing/Single_Board_Computer/x86_based_3_5_Single_Board_Computer/IB962") },
+          { model: "IB96W", name: '3.5" SBC Wide-Temp', desc: "13th Gen Core wide-temperature for extreme conditions.", img: img("small_IB96W.png"), url: url("en/product/category/Embedded_Computing/Single_Board_Computer/x86_based_3_5_Single_Board_Computer/IB96W") },
+          { model: "IB200", name: '2.5" SBC', desc: "AMD Ryzen Embedded R2000 for compact systems.", img: img("small_IB200.png"), url: url("en/product/category/Embedded_Computing/Single_Board_Computer/x86_based_2_5_Single_Board_Computer/IB200") },
+          { model: "IBR117", name: '3.5" ARM SBC', desc: "NXP Cortex-A9 i.MX 6 for low-power edge processing.", img: img("IBR117_255X170px.png"), url: url("en/product/category/Embedded_Computing/Single_Board_Computer/ARM_based_3_5_Single_Board_Computer/IBR117") },
+          { model: "IBR215", name: '2.5" ARM SBC', desc: "NXP Cortex-A53 i.MX 8M Plus for AI edge inference.", img: img("small_IBR215.png"), url: url("en/product/category/Embedded_Computing/Single_Board_Computer/ARM_based_2_5_Single_Board_Computer/IBR215") },
         ],
       },
       {
         name: "CPU Module",
         products: [
-          { model: "ET981", name: "COM Express Type 6", desc: "13th Gen Intel Core P-Series for modular system design.", img: imgBase + "ET981.png" },
-          { model: "ET980", name: "COM Express Type 6", desc: "12th Gen Intel Core P-series for scalable performance." },
-          { model: "IBQ800", name: "Qseven Module", desc: "Intel Atom x7/x5 for compact embedded upgrades." },
-          { model: "ET839", name: "ETX Module", desc: "Intel Atom E3845 for legacy industrial systems." },
+          { model: "ET981", name: "COM Express Type 6", desc: "13th Gen Intel Core P-Series for modular designs.", img: img("small_ET981.png"), url: url("en/product/category/Embedded_Computing/CPU_Module/COM_Express/ET981") },
+          { model: "ET980", name: "COM Express Type 6", desc: "12th Gen Intel Core P-series for scalable performance.", img: img("small_ET980.png"), url: url("en/product/category/Embedded_Computing/CPU_Module/COM_Express/ET980") },
+          { model: "IBQ800", name: "Qseven Module", desc: "Intel Atom x7/x5 for compact embedded upgrades.", img: img("small_IBQ800.jpg"), url: url("en/product/category/Embedded_Computing/CPU_Module/QSeven/IBQ800") },
+          { model: "ET839", name: "ETX Module", desc: "Intel Atom E3845 for legacy industrial systems.", img: img("small_ET839.png"), url: url("en/product/category/Embedded_Computing/CPU_Module/ETX/ET839") },
         ],
       },
       {
         name: "CPU Card & Accessories",
         products: [
-          { model: "IB996", name: "Full-Size CPU Card", desc: "14th/13th/12th Gen Intel Core for central AFC processing.", img: imgBase + "IB996.png" },
-          { model: "IP419", name: "COM Express Carrier", desc: "Type 6 carrier board for custom embedded solutions." },
-          { model: "IP416", name: "Qseven Carrier", desc: "Carrier board for Qseven module integration." },
+          { model: "IB996", name: "Full-Size CPU Card", desc: "14th/13th/12th Gen Core for central processing.", img: img("small_IB996.png"), url: url("en/product/category/Embedded_Computing/CPU_Card/Full-Size_CPU_Card/IB996") },
+          { model: "IP419", name: "COM Express Carrier", desc: "Type 6 carrier board for custom solutions.", img: img("small_IP419.jpg"), url: url("en/product/category/Embedded_Computing/Carrier_board/COM_Express_Type_6/IP419") },
+          { model: "IP416", name: "Qseven Carrier", desc: "Carrier board for Qseven module integration.", img: img("small_IP416.jpg"), url: url("en/product/category/Embedded_Computing/Carrier_board/Qseven/IP416") },
+          { model: "IP412", name: "ETX Carrier", desc: "ETX carrier board for embedded upgrades.", img: img("small_IP412.jpg"), url: url("en/product/category/Embedded_Computing/Carrier_board/ETX_Carrier_Board/IP412") },
         ],
       },
     ],
@@ -138,43 +140,44 @@ const productCategories = [
   {
     id: "ai",
     label: "Edge AI & System",
-    catUrl: "https://www.ibase.com.tw/en/product/category/Edge_AI___Intelligent_System",
     groups: [
       {
         name: "AI Computing",
         products: [
-          { model: "EC3020", name: "Edge AI Computer", desc: "NVIDIA Jetson Orin NX/Nano for CCTV passenger counting.", img: imgBase + "EC3020.png" },
-          { model: "EC3000", name: "Edge AI Computer", desc: "Jetson Orin platform for real-time station security AI.", img: imgBase + "EC3000.png" },
-          { model: "EC3100", name: "Edge AI Computer", desc: "Jetson Orin with extended I/O for transportation AI." },
-          { model: "ES1002", name: "Edge AI Server", desc: "AMD EPYC Embedded 8004 for high-throughput AI inferencing.", img: imgBase + "ES1002.png" },
+          { model: "EC3020", name: "Edge AI Computer", desc: "NVIDIA Jetson Orin NX/Nano for passenger counting.", img: img("small_EC3020.png"), url: url("en/product/category/Edge_AI_Intelligent_System/AI_Computing_Platform/Edge_AI_Computer/EC3020") },
+          { model: "EC3000", name: "Edge AI Computer", desc: "Jetson Orin for real-time station security AI.", img: img("small_EC3000.png"), url: url("en/product/category/Edge_AI_Intelligent_System/AI_Computing_Platform/Edge_AI_Computer/EC3000") },
+          { model: "EC3100", name: "Edge AI Computer", desc: "Jetson Orin with extended I/O for transport AI.", img: img("small_EC3100(1).png"), url: url("en/product/category/Edge_AI_Intelligent_System/AI_Computing_Platform/Edge_AI_Computer/EC3100") },
+          { model: "ES1002", name: "Edge AI Server", desc: "AMD EPYC 8004 for high-throughput AI inferencing.", img: img("small_ES1002.png"), url: url("en/product/category/Edge_AI_Intelligent_System/AI_Computing_Platform/Edge_AI_Server/ES1002") },
+          { model: "MI1005", name: "AI Edge Board", desc: "Intel Core Ultra as AI edge inference board.", img: img("small_MI1005.png"), url: url("en/product/category/Edge_AI_Intelligent_System/AI_Computing_Platform/AI_Edge_Board/MI1005") },
         ],
       },
       {
-        name: "Edge & IoT System",
+        name: "Edge & IoT",
         products: [
-          { model: "AGS104T", name: "IoT Edge Gateway", desc: "Ultra-compact Intel Atom gateway for AFC device aggregation.", img: imgBase + "AGS104T.png" },
-          { model: "AGS104L", name: "IoT Edge Gateway", desc: "Low-power variant for remote station monitoring." },
-          { model: "ACS413", name: "Compact Embedded System", desc: "13th Gen Intel Core for real-time station supervision.", img: imgBase + "ACS413.png" },
-          { model: "ARS200", name: "Ruggedized System", desc: "IP65 waterproof outdoor computer for trackside use.", img: imgBase + "ARS200.png" },
+          { model: "AGS104T", name: "IoT Edge Gateway", desc: "Ultra-compact Intel Atom for AFC device aggregation.", img: img("small_AGS104T.png"), url: url("en/product/category/Edge_AI_Intelligent_System/Edge_Computing_Wide_Temperature_System/AGS_Series_IoT_Gateway_Edge_Computing_System/AGS104T") },
+          { model: "AGS104L", name: "IoT Edge Gateway", desc: "Low-power variant for remote station monitoring.", img: img("small_AGS104L_.png"), url: url("en/product/category/Edge_AI_Intelligent_System/Edge_Computing_Wide_Temperature_System/AGS_Series_IoT_Gateway_Edge_Computing_System/AGS104L") },
+          { model: "ACS413", name: "Compact Embedded", desc: "13th Gen Core for real-time station supervision.", img: img("small_ACS413.png"), url: url("en/product/category/Edge_AI_Intelligent_System/Edge_Computing_Wide_Temperature_System/ACS_Series_Advanced_Compact_Embedded_System/ACS413") },
+          { model: "ARS200", name: "Ruggedized System", desc: "IP65 waterproof for trackside environments.", img: img("small_ARS200.png"), url: url("en/product/category/Edge_AI_Intelligent_System/Edge_Computing_Wide_Temperature_System/ARS_Series_Advanced_Ruggedized_System/ARS200") },
         ],
       },
       {
-        name: "Expandable System",
+        name: "Embedded System",
         products: [
-          { model: "AES100", name: "Advanced Expandable System", desc: "14th/13th Gen Intel Core i9 for central data concentrators.", img: imgBase + "AES100.png" },
-          { model: "AMI242", name: "Compact Expandable Fanless", desc: "Fanless system for station device control.", img: imgBase + "AMI242.png" },
-          { model: "AMS322", name: "Compact Expandable System", desc: "11th Gen Intel Core for medium-scale deployments.", img: imgBase + "AMS322.png" },
-          { model: "CMB108", name: "Expandable Industrial PC", desc: "High-performance 65W TDP for heavy processing tasks.", img: imgBase + "CMB108.png" },
-          { model: "AMS210", name: "Automatic Control System", desc: "9th/8th Gen Intel Core for automated fare gate operations.", img: imgBase + "AMS210.png" },
+          { model: "AES100", name: "Expandable System", desc: "14th/13th Gen Core i9 for central concentrators.", img: img("small_AES100.png"), url: url("en/product/category/Edge_AI_Intelligent_System/Expandable_Embedded_System/AES_Series_Advanced_Expandable_System/AES100") },
+          { model: "AMI242", name: "Expandable Fanless", desc: "Compact fanless for station device control.", img: img("small_AMI242.png"), url: url("en/product/category/Edge_AI_Intelligent_System/Expandable_Embedded_System/AMI_Series_Expandable_Fanless_System/AMI242") },
+          { model: "AMS322", name: "Compact Expandable", desc: "11th Gen Core for medium-scale deployments.", img: img("small_AMS322.png"), url: url("en/product/category/Edge_AI_Intelligent_System/Expandable_Embedded_System/AMS_Series_Compact_Expandable_Fanless_System/AMS322") },
+          { model: "CMB108", name: "Expandable Industrial PC", desc: "65W TDP for heavy processing tasks.", img: img("small_CMB108.png"), url: url("en/product/category/Edge_AI_Intelligent_System/Expandable_Embedded_System/CMB_Series_Expandable_System/CMB108") },
+          { model: "AMS210", name: "Auto Control System", desc: "9th/8th Gen Core for automated fare gates.", img: img("small_AMS210.png"), url: url("en/product/category/Edge_AI_Intelligent_System/Automatic_Control_System/Automatic_Control_System/AMS210") },
         ],
       },
       {
-        name: "Compact System",
+        name: "Compact & Mini System",
         products: [
-          { model: "ASB100-PI800", name: "Palm-Sized System", desc: "Intel Atom x7433RE for space-limited kiosks.", img: imgBase + "ASB100-PI800.png" },
-          { model: "CP100", name: "Palm-Sized System", desc: "AMD Ryzen Embedded R2000 for compact edge computing.", img: imgBase + "CP100.png" },
-          { model: "CSB200-818", name: "Fanless System", desc: "Intel Atom E3940 for low-power station devices." },
-          { model: "CMI300-1001", name: "Slim Mini-ITX System", desc: "Slim form factor with IBASE Mini-ITX motherboard." },
+          { model: "ASB100-PI800", name: "Palm-Sized System", desc: "Intel Atom x7433RE for space-limited kiosks.", img: img("small_ASB100-PI800.png"), url: url("en/product/category/Edge_AI_Intelligent_System/PICO_ITX_System/ASB_Series/ASB100-PI800") },
+          { model: "CP100", name: "Palm-Sized System", desc: "AMD Ryzen R2000 for compact edge computing.", img: img("small_CP100.png"), url: url("en/product/category/Edge_AI_Intelligent_System/PICO_ITX_System/CP_Series_Edge_Computer_with_IBASE_2_5_PICO_ITX_Board/CP100") },
+          { model: "ASB210-962H", name: "Compact System", desc: "Intel Core Ultra 100H for station computing.", img: img("small_ASB210-962H.png"), url: url("en/product/category/Edge_AI_Intelligent_System/SBC_System/ASB_Series_Fanless_System_with_IBASE_3_5_SBC/ASB210-962H") },
+          { model: "CSB200-818", name: "Fanless System", desc: "Intel Atom E3940 for low-power station devices.", img: img("small_CSB200-818.jpg"), url: url("en/product/category/Edge_AI_Intelligent_System/SBC_System/CSB_Series_Slim_System_with_IBASE_3_5_SBC/CSB200-818") },
+          { model: "CMI300-1001", name: "Slim Mini-ITX System", desc: "Slim system with IBASE Mini-ITX motherboard.", img: img("small_CMI300-1001.png"), url: url("en/product/category/Edge_AI_Intelligent_System/Mini_ITX_System/CMI_Series_System_with_IBASE_Mini_ITX/CMI300-1001") },
         ],
       },
     ],
@@ -182,23 +185,23 @@ const productCategories = [
   {
     id: "panel",
     label: "Panel PC & Monitor",
-    catUrl: "https://www.ibase.com.tw/en/product/category/Panel_PC___ePaper",
     groups: [
       {
         name: "Panel PC",
         products: [
-          { model: "IXPC Series", name: "Modular Panel PC", desc: "Industrial modular panel PC for station operator workstations." },
-          { model: "IPPC Series", name: "Compact Panel PC", desc: "Compact industrial panel PC for service desks." },
-          { model: "IDOOH Series", name: "Sunlight Readable Panel PC", desc: "Outdoor panel PC for platform information kiosks." },
+          { model: "IXPC Series", name: "Modular Panel PC", desc: "Industrial modular panel for operator workstations.", url: url("en/product/category/Panel_PC_Touch_Monitor/Industrial_Modular_Panel_PC/IXPC") },
+          { model: "IPPC Series", name: "Compact Panel PC", desc: "Compact panel PC for station service desks.", url: url("en/product/category/Panel_PC_Touch_Monitor/Industrial_Panel_PC/IPPC_Series_Compact_Panel_PC") },
+          { model: "IDOOH Series", name: "Sunlight Readable", desc: "Outdoor panel PC for platform info kiosks.", url: url("en/product/category/Panel_PC_Touch_Monitor/Outdoor_Panel_PC/IDOOH_Series_Sunlight_Readable_Panel_PC") },
         ],
       },
       {
-        name: "Touch Monitor & ODM",
+        name: "Touch & ODM",
         products: [
-          { model: "IPPL Series", name: "Industrial Touch Monitor", desc: "Rugged touch monitor for passenger-facing displays." },
-          { model: "Smart Retail PC", name: "ODM Panel PC", desc: "Smart retail panel PC for ticketing and info kiosks." },
-          { model: "Stainless Steel PC", name: "ODM Panel PC", desc: "Stainless steel panel PC for sanitary environments." },
-          { model: "Medical Panel PC", name: "ODM Panel PC", desc: "Medical-grade panel PC for clinical applications." },
+          { model: "IPPL Series", name: "Touch Monitor", desc: "Rugged touch monitor for passenger-facing displays.", url: url("en/product/category/Panel_PC_Touch_Monitor/Industrial_Touch_Monitor/IPPL_Series") },
+          { model: "Smart Retail PC", name: "ODM Panel PC", desc: "Smart retail panel for ticketing kiosks.", url: url("en/product/category/Panel_PC_Touch_Monitor/ODM_Panel_PC/Smart_Retail_Panel_PC") },
+          { model: "Compact Panel PC", name: "ODM Panel PC", desc: "Compact ODM panel for embedded integration.", url: url("en/product/category/Panel_PC_Touch_Monitor/ODM_Panel_PC/Compact_Panel_PC") },
+          { model: "Stainless Steel PC", name: "ODM Panel PC", desc: "Stainless steel for sanitary environments.", url: url("en/product/category/Panel_PC_Touch_Monitor/ODM_Panel_PC/Stainless_Steel_Panel_PC") },
+          { model: "Medical Panel PC", name: "ODM Panel PC", desc: "Medical-grade panel for clinical applications.", url: url("en/product/category/Panel_PC_Touch_Monitor/ODM_Panel_PC/Medical_Panel_PC") },
         ],
       },
     ],
@@ -206,37 +209,36 @@ const productCategories = [
   {
     id: "signage",
     label: "Signage & Network",
-    catUrl: "https://www.ibase.com.tw/en/product/category/Digital_Signage_Player",
     groups: [
       {
         name: "Signage Player",
         products: [
-          { model: "SI-212-N", name: "Entry Signage Player", desc: "Fanless 2x HDMI for PIDS on MRT platforms.", img: imgBase + "SI-212-N.png" },
-          { model: "SI-121-N", name: "Entry Signage Player", desc: "Intel Core N-Series single HDMI for information displays.", img: imgBase + "SI-121-N.png" },
-          { model: "SI-664-N", name: "Perf Signage Player", desc: "Intel Core Ultra 4x HDMI for multi-display PIS.", img: imgBase + "SI-664-N.png" },
-          { model: "SI-663-N", name: "Perf Signage Player", desc: "13th/12th Gen Intel Core 3-output for medium signage." },
-          { model: "SE-603-N", name: "Fanless Signage Player", desc: "11th Gen Intel Core reliable for passenger information.", img: imgBase + "SE-603-N.png" },
-          { model: "SW-602-N", name: "Waterproof Signage Player", desc: "IP-rated outdoor for platform information displays.", img: imgBase + "SW-602-N.png" },
-          { model: "ISR215", name: "ARM Signage Player", desc: "NXP i.MX 8M Plus energy-efficient for digital signage.", img: imgBase + "ISR215.png" },
-          { model: "ISR500", name: "ARM Signage Player", desc: "MediaTek Genio 700 for high-performance ARM signage." },
+          { model: "SI-212-N", name: "Entry Signage Player", desc: "Fanless 2x HDMI for PIDS on MRT platforms.", img: img("small_SI-212-N.png"), url: url("en/product/category/Digital_Signage_Player/Entry_Level_Signage_Player/2_Display_Outputs_Signage_Player/SI-212-N") },
+          { model: "SI-121-N", name: "Entry Signage Player", desc: "Intel Core N-Series single HDMI for displays.", img: img("small_SI-121-N.png"), url: url("en/product/category/Digital_Signage_Player/Entry_Level_Signage_Player/1_Display_Outputs/SI-121-N") },
+          { model: "SI-664-N", name: "Perf Signage Player", desc: "Intel Core Ultra 4x HDMI for multi-display PIS.", img: img("small_SI-664-N.png"), url: url("en/product/category/Digital_Signage_Player/Mid_Range_Signage_Player/4_Display_Outputs/SI_664_N") },
+          { model: "SI-663-N", name: "Perf Signage Player", desc: "13th/12th Gen Core 3-output for medium signage.", img: img("small_SI-663-N.png"), url: url("en/product/category/Digital_Signage_Player/Mid_Range_Signage_Player/3_Display_Outputs/SI-663-N") },
+          { model: "SE-603-N", name: "Fanless Signage Player", desc: "11th Gen Core for passenger information.", img: img("small_SE-603-N.png"), url: url("en/product/category/Digital_Signage_Player/Outdoor_Waterproof_Signage_Player/Outdoor_Signage_Player/SE-603-N") },
+          { model: "SW-602-N", name: "Waterproof Signage", desc: "IP-rated outdoor for platform displays.", img: img("small_SW-602-N.png"), url: url("en/product/category/Digital_Signage_Player/Outdoor_Waterproof_Signage_Player/Waterproof_Signage_Player/SW-602-N") },
+          { model: "ISR215", name: "ARM Signage", desc: "NXP i.MX 8M Plus energy-efficient signage.", img: img("small_ISR215.png"), url: url("en/product/category/Digital_Signage_Player/ARM_based_Signage_Player/NXP_i_MX8M_based_Signage_Player/ISR215") },
+          { model: "ISR500", name: "ARM Signage", desc: "MediaTek Genio 700 for high-performance ARM signage.", img: img("small_ISR500.png"), url: url("en/product/category/Digital_Signage_Player/ARM_based_Signage_Player/MediaTek_Genio-based_Signage_Player/ISR500") },
         ],
       },
       {
         name: "Video Wall",
         products: [
-          { model: "SP-63ER", name: "Video Wall Player", desc: "8th Gen Intel Core with 16x HDMI for large video walls." },
-          { model: "SI-636", name: "Video Wall Player", desc: "13th/12th Gen Intel Core 6x HDMI for multi-display." },
-          { model: "SI-624", name: "Video Wall Player", desc: "NVIDIA MXM 4x DP for high-resolution video walls." },
+          { model: "SP-63ER", name: "Video Wall Player", desc: "8th Gen Core 16x HDMI for large video walls.", img: img("small_SP-63E_ER.png"), url: url("en/product/category/Digital_Signage_Player/Extreme_Performance_Signage_Player/16_Display_Outputs/SP-63ER") },
+          { model: "SI-636", name: "Video Wall Player", desc: "13th/12th Gen Core 6x HDMI for multi-display.", img: img("small_SI-636.png"), url: url("en/product/category/Digital_Signage_Player/Extreme_Performance_Signage_Player/6_Display_Outputs/SI-636") },
+          { model: "SI-624", name: "Video Wall Player", desc: "NVIDIA MXM 4x DP for high-res walls.", img: img("small_SI-624.png"), url: url("en/product/category/Digital_Signage_Player/Extreme_Performance_Signage_Player/4_Display_Outputs/SI-624") },
         ],
       },
       {
         name: "Network Appliance",
         products: [
-          { model: "INA7605", name: "2U Network Appliance", desc: "Dual 5th Gen Xeon 64 GbE for central station networking.", img: imgBase + "INA7605.png" },
-          { model: "INA7302", name: "1U Performance Appliance", desc: "AMD Ryzen 7000 14 GbE for station network aggregation.", img: imgBase + "INA7302.png" },
-          { model: "INA3605", name: "1U Enterprise Appliance", desc: "Xeon E-2300 16 GbE for main station network core.", img: imgBase + "INA3605.png" },
-          { model: "INA3608", name: "1U Security Server", desc: "14th/13th/12th Gen Intel Core 16GbE + 10G for security." },
-          { model: "INA2205", name: "1U Entry Appliance", desc: "Intel Atom 8 GbE for compact station network edge.", img: imgBase + "INA2205.png" },
+          { model: "INA7605", name: "2U Network Appliance", desc: "Dual Xeon 64 GbE for central networking.", img: img("small_INA7605_Preliminary.png"), url: url("en/product/category/Network_Appliance/Rackmount_Network_Appliance/Performance_2U_Network_Appliance/INA7605") },
+          { model: "INA7302", name: "1U Perf Appliance", desc: "AMD Ryzen 14 GbE for station aggregation.", img: img("small_INA7302.png"), url: url("en/product/category/Network_Appliance/Rackmount_Network_Appliance/Performance_1U_Network_Appliance/INA7302") },
+          { model: "INA3605", name: "1U Enterprise", desc: "Xeon E-2300 16 GbE for network core.", img: img("small_INA3605_EOL.png"), url: url("en/product/category/Network_Appliance/Rackmount_Network_Appliance/Enterprise_1U_Network_Appliance/INA3605") },
+          { model: "INA3608", name: "1U Security Server", desc: "14th/13th/12th Core 16GbE+10G for security.", url: url("en/product/category/Network_Appliance/Rackmount_Network_Appliance/Mainstream_1U_Network_Appliance/INA3608") },
+          { model: "INA2205", name: "1U Entry", desc: "Intel Atom 8 GbE for compact edge.", img: img("small_INA2205.png"), url: url("en/product/category/Network_Appliance/Rackmount_Network_Appliance/Entry_1U_Network_Appliance/INA2205") },
         ],
       },
     ],
@@ -244,22 +246,21 @@ const productCategories = [
   {
     id: "transport",
     label: "Transportation",
-    catUrl: "https://www.ibase.com.tw/en/product/category/Intelligent_Transportation",
     groups: [
       {
         name: "Railway System",
         products: [
-          { model: "MPT-R Series", name: "Railway Computer", desc: "EN 50155 certified for onboard AFC and train-ground communication." },
-          { model: "MPT-V Series", name: "In-Vehicle Computer", desc: "E-Mark certified for depot and maintenance yard operations." },
-          { model: "MPT-3100V-AI", name: "AI Transport System", desc: "ITxPT & E-Mark edge AI for intelligent transport systems." },
+          { model: "MPT-R Series", name: "Railway Computer", desc: "EN 50155 certified for onboard AFC communication.", url: url("en/product/category/Intelligent_Transportation/Railway_Computer_System/MPT_R_Series_EN50155_Certified_Railway_Computer") },
+          { model: "MPT-V Series", name: "In-Vehicle Computer", desc: "E-Mark certified for depot operations.", url: url("en/product/category/Intelligent_Transportation/In_Vehicle_Computer_System/MPT_V_Series_E_mark_Certified_In_Vehicle_Computer") },
+          { model: "MPT-3100V-AI", name: "AI Transport System", desc: "ITxPT edge AI for intelligent transport.", img: img("small_MPT-3100V.png"), url: url("en/product/category/Edge_AI_Intelligent_System/AI_Computing_Platform/Edge_AI_Transportation_System/MPT-3100V-AI") },
         ],
       },
       {
         name: "Railway HMI",
         products: [
-          { model: "MPPC Series", name: "Railway Panel PC", desc: "Railway touch panel for driver and operator cab interfaces." },
-          { model: "BYTEM Series", name: "Railway Panel PC", desc: "Compact railway panel PC for onboard passenger info." },
-          { model: "MRD Series", name: "Bar-Type PIS Display", desc: "Ultra-wide bar display for platform passenger information." },
+          { model: "MPPC Series", name: "Railway Panel PC", desc: "Railway touch panel for cab interfaces.", url: url("en/product/category/Intelligent_Transportation/Transportation_Panel_PC/MPPC_Series_EN50155_Transportation_Panel_PC") },
+          { model: "BYTEM Series", name: "Railway Panel PC", desc: "Compact railway panel for onboard info.", url: url("en/product/category/Intelligent_Transportation/Transportation_Panel_PC/BYTEM_Series_Railway_Panel_PC") },
+          { model: "MRD Series", name: "Bar-Type PIS Display", desc: "Ultra-wide bar display for platform PIS.", url: url("en/product/category/Intelligent_Transportation/Transportation_Panel_PC/MRD_Series_Bar_Type_PIS_Panel_PC") },
         ],
       },
     ],
@@ -267,28 +268,27 @@ const productCategories = [
   {
     id: "risc",
     label: "RISC Platform",
-    catUrl: "https://www.ibase.com.tw/en/product/category/RISC_Platform",
     groups: [
       {
         name: "Module & Carrier",
         products: [
-          { model: "SMARC Module", name: "NXP SMARC Module", desc: "ARM-based SMARC 2.1 module for low-power embedded systems." },
-          { model: "SMARC Carrier 2.1", name: "SMARC Carrier Board", desc: "Carrier board for SMARC 2.1 module integration." },
+          { model: "SMARC Module", name: "NXP SMARC Module", desc: "ARM SMARC 2.1 module for low-power systems.", url: url("en/product/category/RISC_Platform/SMARC_Module/NXP_i_MX8M_based_SMARC_Module") },
+          { model: "SMARC Carrier 2.1", name: "SMARC Carrier", desc: "Carrier board for SMARC 2.1 module.", url: url("en/product/category/RISC_Platform/Carrier_Board_for_SMARC_Module/SMARC_2_1_Carrier_Board") },
         ],
       },
       {
         name: "RISC SBC",
         products: [
-          { model: '3.5" RISC SBC', name: "ARM Single Board Computer", desc: "3.5\" ARM-based SBC for embedded control applications." },
-          { model: '2.5" RISC SBC', name: "ARM Single Board Computer", desc: "2.5\" ARM-based SBC for compact edge deployments." },
-          { model: "Ultra-Compact SBC", name: "ARM SBC", desc: "Ultra-compact ARM board for deeply embedded systems." },
+          { model: '3.5" RISC SBC', name: "ARM SBC", desc: '3.5" ARM SBC for embedded control.', url: url("en/product/category/RISC_Platform/RISC_based_Single_Board_Computer/3_5_Disk_Size_SBC") },
+          { model: '2.5" RISC SBC', name: "ARM SBC", desc: '2.5" ARM SBC for compact deployments.', url: url("en/product/category/RISC_Platform/RISC_based_Single_Board_Computer/2_5_Disk_Size_SBC") },
+          { model: "Ultra-Compact SBC", name: "ARM SBC", desc: "Ultra-compact ARM for deeply embedded systems.", url: url("en/product/category/RISC_Platform/RISC_based_Single_Board_Computer/Ultra_Compact_Single_Board_Computer") },
         ],
       },
       {
         name: "ARM System",
         products: [
-          { model: "Edge Computer", name: "RISC Edge System", desc: "ARM-based edge computer for IoT and device connectivity." },
-          { model: "IPR Series", name: "ARM HMI", desc: "ARM-based industrial HMI for operator touch interfaces." },
+          { model: "Edge Computer", name: "RISC Edge System", desc: "ARM edge computer for IoT connectivity.", url: url("en/product/category/RISC_Platform/RISC_based_Edge_Computing_System/Edge_Computer") },
+          { model: "IPR Series", name: "ARM HMI", desc: "ARM-based HMI for operator interfaces.", url: url("en/product/category/RISC_Platform/ARM_based_HMI/IPR_Series_Industrial_HMI") },
         ],
       },
     ],
@@ -683,35 +683,35 @@ function ProductsPage() {
             <div className="product-grid">
               {group.products.map((product) => (
                 <article className="product-card reveal" key={product.model}>
-                  <div className="product-card-fig">
-                    {product.img && !failedImgs[product.model] ? (
-                      <img
-                        src={product.img}
-                        alt={product.model}
-                        onError={() => handleImgError(product.model)}
-                        loading="lazy"
-                      />
-                    ) : (
-                      <span className="product-card-icon">{active.label[0]}</span>
-                    )}
-                    <span className="product-model">{product.model}</span>
-                    <a
-                      href={active.catUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="product-card-bar"
-                    >
-                      View on iBASE
-                      <svg aria-hidden="true" viewBox="0 0 24 24" width="14" height="14">
-                        <path d="M7 17 17 7" />
-                        <path d="M7 7h10v10" />
-                      </svg>
-                    </a>
-                  </div>
-                  <div className="product-card-body">
-                    <h2>{product.name}</h2>
-                    <p>{product.desc}</p>
-                  </div>
+                  <a href={product.url} target="_blank" rel="noopener noreferrer" className="product-card-inner">
+                    <div className="product-card-fig">
+                      {product.img && !failedImgs[product.model] ? (
+                        <img
+                          src={product.img}
+                          alt={product.model}
+                          onError={() => handleImgError(product.model)}
+                          loading="lazy"
+                        />
+                      ) : (
+                        <span className="product-card-icon">{active.label[0]}</span>
+                      )}
+                      <div className="product-card-overlay">
+                        <span className="product-overlay-model">{product.model}</span>
+                        <span className="product-overlay-name">{product.name}</span>
+                        <span className="product-overlay-btn">
+                          View on iBASE
+                          <svg aria-hidden="true" viewBox="0 0 24 24" width="14" height="14">
+                            <path d="M7 17 17 7" />
+                            <path d="M7 7h10v10" />
+                          </svg>
+                        </span>
+                      </div>
+                    </div>
+                    <div className="product-card-body">
+                      <h2>{product.name}</h2>
+                      <p>{product.desc}</p>
+                    </div>
+                  </a>
                 </article>
               ))}
             </div>
