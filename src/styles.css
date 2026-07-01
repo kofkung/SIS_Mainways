@@ -202,7 +202,7 @@ img {
 .nav-link.is-active {
   color: var(--color-ink);
   background: var(--gradient-primary);
-  box-shadow: var(--shadow-blue);
+  box-shadow: var(--shadow-blue), 0 0 40px oklch(58% 0.205 253 / 25%);
 }
 
 .header-cta {
@@ -313,7 +313,7 @@ img {
   border: var(--rule-thin) solid var(--color-line);
   border-radius: var(--radius-md);
   background: var(--color-page);
-  box-shadow: var(--shadow-lift);
+  box-shadow: var(--shadow-lift), 0 0 60px oklch(58% 0.205 253 / 6%);
 }
 
 .hero-bg {
@@ -559,6 +559,7 @@ img {
   color: var(--color-dark-ink);
   background: var(--gradient-light);
   border: var(--rule-thin) solid var(--color-line);
+  box-shadow: 0 0 50px oklch(80% 0.135 217 / 4%);
 }
 
 .focus-section::after {
@@ -751,10 +752,18 @@ img {
 }
 
 .service-row > span {
+  display: inline-grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
   color: var(--color-cyan);
+  background: oklch(99% 0.018 232 / 8%);
+  border: var(--rule-thin) solid oklch(99% 0.018 232 / 14%);
+  border-radius: var(--radius-sm);
   font-size: var(--text-lg);
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1;
+  letter-spacing: -0.02em;
 }
 
 .service-row p {
@@ -837,9 +846,18 @@ img {
 }
 
 .portfolio-card figure {
+  position: relative;
   margin: 0;
   overflow: hidden;
   background: var(--color-page-2);
+}
+
+.portfolio-card figure::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, oklch(16% 0.071 252 / 50%));
+  pointer-events: none;
 }
 
 .portfolio-card img {
@@ -1047,11 +1065,15 @@ img {
 }
 
 .contact-form input:hover,
-.contact-form textarea:hover,
+.contact-form textarea:hover {
+  border-color: var(--color-line-strong);
+}
+
 .contact-form input:focus,
 .contact-form textarea:focus {
-  border-color: var(--color-line-strong);
-  box-shadow: 0 0 0 var(--space-2xs) var(--color-focus);
+  border-color: var(--color-blue);
+  box-shadow: 0 0 0 var(--space-2xs) var(--color-focus), 0 0 30px oklch(58% 0.205 253 / 15%);
+  background: oklch(26% 0.104 248 / 65%);
 }
 
 .contact-form input:disabled,
