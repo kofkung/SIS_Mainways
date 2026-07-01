@@ -1158,6 +1158,10 @@ body.is-transitioning .transition-wipe span {
   }
 }
 
+/* ──────────────────────────────────────────
+   PRODUCT SECTION — Liquid Glass Style
+   ────────────────────────────────────────── */
+
 .product-section {
   padding-top: clamp(52px, 7vw, 88px);
 }
@@ -1170,103 +1174,243 @@ body.is-transitioning .transition-wipe span {
   line-height: 1.7;
 }
 
+/* ── Glass Explorer Container ── */
 .product-explorer {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
-  gap: 2px;
-  border-radius: calc(var(--radius) + 10px);
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 400px);
+  gap: 0;
+  border-radius: 24px;
   overflow: hidden;
-  background: color-mix(in srgb, var(--line) 70%, transparent);
-  box-shadow: 0 30px 90px rgba(9, 28, 58, 0.14);
+  background:
+    linear-gradient(135deg,
+      rgba(17, 141, 240, 0.04) 0%,
+      rgba(25, 199, 193, 0.03) 50%,
+      rgba(17, 141, 240, 0.04) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow:
+    0 4px 24px rgba(17, 141, 240, 0.06),
+    0 24px 80px rgba(9, 28, 58, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(2px);
 }
 
+[data-theme="dark"] .product-explorer {
+  background:
+    linear-gradient(135deg,
+      rgba(17, 141, 240, 0.06) 0%,
+      rgba(25, 199, 193, 0.04) 50%,
+      rgba(17, 141, 240, 0.06) 100%);
+  border-color: rgba(84, 184, 255, 0.15);
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.2),
+    0 24px 80px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* ── Glass Columns ── */
 .product-columns {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 2px;
+  gap: 0;
 }
 
 .product-col {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 2px;
-  min-height: 420px;
-  padding: 10px;
+  min-height: 480px;
+  padding: 8px;
   background:
-    linear-gradient(180deg, color-mix(in srgb, var(--surface-solid) 88%, transparent), color-mix(in srgb, var(--surface-solid) 72%, transparent));
-  backdrop-filter: blur(22px) saturate(160%);
-  -webkit-backdrop-filter: blur(22px) saturate(160%);
+    linear-gradient(180deg,
+      color-mix(in srgb, var(--surface-solid) 72%, transparent),
+      color-mix(in srgb, var(--surface-solid) 54%, transparent));
+  backdrop-filter: blur(40px) saturate(180%);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--accent) 30%, transparent) transparent;
 }
 
+.product-col::-webkit-scrollbar {
+  width: 4px;
+}
+
+.product-col::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.product-col::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--accent) 30%, transparent);
+  border-radius: 99px;
+}
+
+/* Subtle glass divider between columns */
+.product-col + .product-col {
+  border-left: 1px solid color-mix(in srgb, var(--accent) 10%, var(--line));
+}
+
+/* Column header labels */
+.product-col::before {
+  content: attr(aria-label);
+  display: block;
+  padding: 10px 14px 8px;
+  color: var(--accent);
+  font-size: 10px;
+  font-weight: 850;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.7;
+}
+
+/* ── Glass Item Buttons ── */
 .product-item {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-  padding: 14px 16px;
-  border-radius: 10px;
+  padding: 12px 14px;
+  border-radius: 12px;
   background: transparent;
   color: var(--text);
-  font-size: 14.5px;
+  font-size: 13.5px;
   font-weight: 650;
   text-align: left;
   cursor: pointer;
+  border: 1px solid transparent;
   transition:
-    background-color 0.22s ease,
-    color 0.22s ease,
-    transform 0.22s var(--ease),
-    box-shadow 0.22s ease;
+    background-color 0.28s ease,
+    color 0.28s ease,
+    transform 0.32s var(--ease),
+    box-shadow 0.28s ease,
+    border-color 0.28s ease;
+}
+
+.product-item span {
+  pointer-events: none;
 }
 
 .product-item svg {
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
   flex: none;
   stroke: currentColor;
-  stroke-width: 2;
+  stroke-width: 2.2;
   fill: none;
   stroke-linecap: round;
   stroke-linejoin: round;
-  opacity: 0.55;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.25s ease, transform 0.25s var(--ease);
 }
 
+.product-item:hover svg,
+.product-item:focus-visible svg,
+.product-item.is-active svg {
+  opacity: 0.8;
+  transform: translateX(0);
+}
+
+/* Glass hover effect */
 .product-item:hover,
 .product-item:focus-visible {
-  background: color-mix(in srgb, var(--accent) 10%, transparent);
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+  border-color: color-mix(in srgb, var(--accent) 12%, transparent);
   transform: translateX(3px);
 }
 
+/* Glass active effect with glow */
 .product-item.is-active {
   color: #fff;
-  background: linear-gradient(120deg, var(--accent), var(--accent-2));
-  box-shadow: 0 12px 26px color-mix(in srgb, var(--accent) 38%, transparent);
+  background:
+    linear-gradient(135deg,
+      rgba(17, 141, 240, 0.85),
+      rgba(25, 199, 193, 0.75));
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow:
+    0 4px 16px rgba(17, 141, 240, 0.3),
+    0 8px 32px rgba(17, 141, 240, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 .product-item.is-active svg {
-  opacity: 0.9;
+  opacity: 1;
 }
 
+/* ── Glass Preview Panel ── */
 .product-preview {
   position: relative;
-  padding: 26px;
+  padding: 28px;
   display: flex;
   flex-direction: column;
   background:
-    linear-gradient(160deg, color-mix(in srgb, var(--accent) 14%, var(--surface-solid)), color-mix(in srgb, var(--accent-2) 10%, var(--surface-solid)) 70%);
-  backdrop-filter: blur(26px) saturate(180%);
-  -webkit-backdrop-filter: blur(26px) saturate(180%);
-  border-left: 1px solid color-mix(in srgb, #fff 40%, var(--line));
+    linear-gradient(160deg,
+      color-mix(in srgb, var(--accent) 6%, var(--surface-solid)) 0%,
+      color-mix(in srgb, var(--accent-2) 4%, var(--surface-solid)) 50%,
+      color-mix(in srgb, var(--accent) 8%, var(--surface-solid)) 100%);
+  backdrop-filter: blur(50px) saturate(200%);
+  -webkit-backdrop-filter: blur(50px) saturate(200%);
+  border-left: 1px solid color-mix(in srgb, var(--accent) 15%, var(--line));
+  overflow: hidden;
 }
 
+/* Glass reflection overlay */
+.product-preview::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background:
+    radial-gradient(
+      ellipse at 30% 20%,
+      rgba(255, 255, 255, 0.08) 0%,
+      transparent 50%
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Animated glow orb */
+.product-preview::after {
+  content: "";
+  position: absolute;
+  bottom: -80px;
+  right: -80px;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      circle,
+      rgba(25, 199, 193, 0.12) 0%,
+      rgba(17, 141, 240, 0.06) 40%,
+      transparent 70%
+    );
+  pointer-events: none;
+  z-index: 0;
+  animation: glassOrb 6s ease-in-out infinite alternate;
+}
+
+@keyframes glassOrb {
+  0% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+  100% { transform: translate(-30px, -20px) scale(1.2); opacity: 1; }
+}
+
+/* ── Preview Empty State ── */
 .product-preview-empty {
+  position: relative;
+  z-index: 1;
   margin: auto;
   display: grid;
   justify-items: center;
-  gap: 14px;
+  gap: 18px;
   color: var(--muted);
   text-align: center;
-  padding: 20px;
+  padding: 30px 20px;
 }
 
 .product-preview-empty[hidden] {
@@ -1274,127 +1418,229 @@ body.is-transitioning .transition-wipe span {
 }
 
 .product-preview-empty svg {
-  width: 42px;
-  height: 42px;
+  width: 52px;
+  height: 52px;
   stroke: var(--accent);
-  stroke-width: 1.6;
+  stroke-width: 1.4;
   fill: none;
   stroke-linecap: round;
   stroke-linejoin: round;
-  opacity: 0.6;
+  opacity: 0.4;
+  filter: drop-shadow(0 0 12px rgba(17, 141, 240, 0.3));
 }
 
 .product-preview-empty p {
   margin: 0;
   font-size: 14px;
-  line-height: 1.6;
+  line-height: 1.65;
   max-width: 220px;
 }
 
+/* ── Preview Card ── */
 .product-preview-card {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
-  animation: previewIn 0.4s var(--ease) both;
+  animation: glassReveal 0.5s var(--ease) both;
 }
 
 .product-preview-card[hidden] {
   display: none;
 }
 
-@keyframes previewIn {
+@keyframes glassReveal {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(16px) scale(0.97);
+    filter: blur(4px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
+    filter: blur(0);
   }
 }
 
+/* Glass image container */
 .preview-media {
+  position: relative;
   display: grid;
   place-items: center;
-  height: 168px;
-  padding: 14px;
-  margin-bottom: 18px;
-  background: rgba(255, 255, 255, 0.72);
+  height: 190px;
+  padding: 18px;
+  margin-bottom: 22px;
+  background:
+    linear-gradient(135deg,
+      rgba(255, 255, 255, 0.82),
+      rgba(240, 248, 255, 0.65));
   border: 1px solid rgba(255, 255, 255, 0.6);
-  border-radius: var(--radius);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 14px 34px rgba(9, 28, 58, 0.1);
+  border-radius: 16px;
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -1px 0 rgba(17, 141, 240, 0.06),
+    0 8px 32px rgba(9, 28, 58, 0.08),
+    0 2px 8px rgba(17, 141, 240, 0.04);
+  overflow: hidden;
+}
+
+[data-theme="dark"] .preview-media {
+  background:
+    linear-gradient(135deg,
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0.04));
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+/* Glass shine on image container */
+.preview-media::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 45%;
+  background:
+    linear-gradient(180deg,
+      rgba(255, 255, 255, 0.45) 0%,
+      rgba(255, 255, 255, 0) 100%);
+  border-radius: 16px 16px 0 0;
+  pointer-events: none;
 }
 
 .preview-media img {
+  position: relative;
+  z-index: 1;
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
+  transition: transform 0.4s var(--ease);
+}
+
+.preview-media:hover img {
+  transform: scale(1.06);
 }
 
 .preview-media img[hidden] {
   display: none;
 }
 
+/* Glass fallback badge */
 .preview-media-fallback {
+  position: relative;
+  z-index: 1;
   display: grid;
   place-items: center;
-  width: 84px;
-  height: 84px;
+  width: 90px;
+  height: 90px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  background:
+    linear-gradient(135deg,
+      rgba(17, 141, 240, 0.85),
+      rgba(25, 199, 193, 0.75));
   color: #fff;
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 850;
   letter-spacing: 0.02em;
+  box-shadow:
+    0 8px 32px rgba(17, 141, 240, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 .preview-media-fallback[hidden] {
   display: none;
 }
 
+/* ── Preview Content ── */
 .preview-eyebrow {
-  margin: 0 0 6px;
+  margin: 0 0 8px;
+  padding: 4px 12px;
+  display: inline-block;
+  align-self: flex-start;
   color: var(--accent);
-  font-size: 12px;
-  font-weight: 800;
+  font-size: 10.5px;
+  font-weight: 850;
   text-transform: uppercase;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.06em;
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 15%, transparent);
+  border-radius: 99px;
 }
 
 .product-preview-card h3 {
-  margin: 0 0 10px;
+  margin: 0 0 12px;
   color: var(--text);
-  font-size: 26px;
+  font-size: 28px;
   font-weight: 850;
+  line-height: 1.15;
 }
 
 .product-preview-card p {
-  margin: 0 0 22px;
+  margin: 0 0 24px;
   color: var(--muted);
   font-size: 14.5px;
-  line-height: 1.7;
+  line-height: 1.75;
 }
 
+/* Glass CTA button */
 .preview-link {
   margin-top: auto;
   align-self: flex-start;
+  background:
+    linear-gradient(135deg,
+      rgba(17, 141, 240, 0.9),
+      rgba(25, 199, 193, 0.8)) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow:
+    0 4px 16px rgba(17, 141, 240, 0.25),
+    0 8px 32px rgba(17, 141, 240, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
+  border-radius: 12px;
 }
 
+.preview-link:hover,
+.preview-link:focus-visible {
+  box-shadow:
+    0 6px 24px rgba(17, 141, 240, 0.35),
+    0 12px 48px rgba(17, 141, 240, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+}
+
+/* ── Product Source Footer ── */
 .product-source {
-  margin: 22px 2px 0;
+  margin: 28px 2px 0;
+  padding: 14px 20px;
   color: var(--muted);
   font-size: 13px;
+  background: color-mix(in srgb, var(--accent) 4%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 8%, var(--line));
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
 }
 
 .product-source a {
   color: var(--accent);
-  font-weight: 700;
+  font-weight: 750;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--accent) 30%, transparent);
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.2s ease;
 }
+
+.product-source a:hover {
+  text-decoration-color: var(--accent);
+}
+
 
 
 
 @media (max-width: 1040px) {
   .product-explorer {
     grid-template-columns: 1fr;
+    border-radius: 20px;
   }
 
   .product-columns {
@@ -1403,12 +1649,19 @@ body.is-transitioning .transition-wipe span {
 
   .product-preview {
     border-left: 0;
-    border-top: 1px solid color-mix(in srgb, #fff 40%, var(--line));
-    min-height: 260px;
+    border-top: 1px solid color-mix(in srgb, var(--accent) 12%, var(--line));
+    min-height: 280px;
+  }
+
+  .product-preview::after {
+    bottom: -60px;
+    right: -60px;
+    width: 200px;
+    height: 200px;
   }
 
   .product-col {
-    min-height: 300px;
+    min-height: 280px;
   }
 
   .service-grid,
@@ -1448,8 +1701,25 @@ body.is-transitioning .transition-wipe span {
 
   .product-col {
     min-height: unset;
-    max-height: 240px;
+    max-height: 220px;
     overflow-y: auto;
+  }
+
+  .product-col + .product-col {
+    border-left: 0;
+    border-top: 1px solid color-mix(in srgb, var(--accent) 8%, var(--line));
+  }
+
+  .product-col::before {
+    padding: 8px 14px 6px;
+  }
+
+  .product-explorer {
+    border-radius: 16px;
+  }
+
+  .preview-media {
+    height: 160px;
   }
 
   .site-header {
