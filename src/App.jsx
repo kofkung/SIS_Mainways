@@ -11,6 +11,15 @@ import job13 from "../assets/services/job13.jpg";
 
 const routes = ["home", "about", "services", "projects", "products", "contact"];
 
+const productCatItems = [
+  { id: "embedded", label: "Embedded Computing" },
+  { id: "ai", label: "Edge AI & System" },
+  { id: "panel", label: "Panel PC & Monitor" },
+  { id: "signage", label: "Signage & Network" },
+  { id: "transport", label: "Transportation" },
+  { id: "risc", label: "RISC Platform" },
+];
+
 const navItems = [
   { id: "home", label: "Home" },
   { id: "about", label: "About" },
@@ -189,15 +198,15 @@ const productCategories = [
       {
         name: "Panel PC",
         products: [
-          { model: "IXPC Series", name: "Modular Panel PC", desc: "Industrial modular panel for operator workstations.", url: url("en/product/category/Panel_PC_Touch_Monitor/Industrial_Modular_Panel_PC/IXPC") },
-          { model: "IPPC Series", name: "Compact Panel PC", desc: "Compact panel PC for station service desks.", url: url("en/product/category/Panel_PC_Touch_Monitor/Industrial_Panel_PC/IPPC_Series_Compact_Panel_PC") },
+          { model: "IXPC Series", name: "Modular Panel PC", desc: "Industrial modular panel for operator workstations.", img: img("small_product_IXPC_Series.png"), url: url("en/product/category/Panel_PC_Touch_Monitor/Industrial_Modular_Panel_PC/IXPC") },
+          { model: "IPPC Series", name: "Compact Panel PC", desc: "Compact panel PC for station service desks.", img: img("small_IPPC-W07.png"), url: url("en/product/category/Panel_PC_Touch_Monitor/Industrial_Panel_PC/IPPC_Series_Compact_Panel_PC") },
           { model: "IDOOH Series", name: "Sunlight Readable", desc: "Outdoor panel PC for platform info kiosks.", url: url("en/product/category/Panel_PC_Touch_Monitor/Outdoor_Panel_PC/IDOOH_Series_Sunlight_Readable_Panel_PC") },
         ],
       },
       {
         name: "Touch & ODM",
         products: [
-          { model: "IPPL Series", name: "Touch Monitor", desc: "Rugged touch monitor for passenger-facing displays.", url: url("en/product/category/Panel_PC_Touch_Monitor/Industrial_Touch_Monitor/IPPL_Series") },
+          { model: "IPPL Series", name: "Touch Monitor", desc: "Rugged touch monitor for passenger-facing displays.", img: img("small_IPPL-W270.png"), url: url("en/product/category/Panel_PC_Touch_Monitor/Industrial_Touch_Monitor/IPPL_Series") },
           { model: "Smart Retail PC", name: "ODM Panel PC", desc: "Smart retail panel for ticketing kiosks.", url: url("en/product/category/Panel_PC_Touch_Monitor/ODM_Panel_PC/Smart_Retail_Panel_PC") },
           { model: "Compact Panel PC", name: "ODM Panel PC", desc: "Compact ODM panel for embedded integration.", url: url("en/product/category/Panel_PC_Touch_Monitor/ODM_Panel_PC/Compact_Panel_PC") },
           { model: "Stainless Steel PC", name: "ODM Panel PC", desc: "Stainless steel for sanitary environments.", url: url("en/product/category/Panel_PC_Touch_Monitor/ODM_Panel_PC/Stainless_Steel_Panel_PC") },
@@ -237,8 +246,8 @@ const productCategories = [
           { model: "INA7605", name: "2U Network Appliance", desc: "Dual Xeon 64 GbE for central networking.", img: img("small_INA7605_Preliminary.png"), url: url("en/product/category/Network_Appliance/Rackmount_Network_Appliance/Performance_2U_Network_Appliance/INA7605") },
           { model: "INA7302", name: "1U Perf Appliance", desc: "AMD Ryzen 14 GbE for station aggregation.", img: img("small_INA7302.png"), url: url("en/product/category/Network_Appliance/Rackmount_Network_Appliance/Performance_1U_Network_Appliance/INA7302") },
           { model: "INA3605", name: "1U Enterprise", desc: "Xeon E-2300 16 GbE for network core.", img: img("small_INA3605_EOL.png"), url: url("en/product/category/Network_Appliance/Rackmount_Network_Appliance/Enterprise_1U_Network_Appliance/INA3605") },
-          { model: "INA3608", name: "1U Security Server", desc: "14th/13th/12th Core 16GbE+10G for security.", url: url("en/product/category/Network_Appliance/Rackmount_Network_Appliance/Mainstream_1U_Network_Appliance/INA3608") },
-          { model: "INA2205", name: "1U Entry", desc: "Intel Atom 8 GbE for compact edge.", img: img("small_INA2205.png"), url: url("en/product/category/Network_Appliance/Rackmount_Network_Appliance/Entry_1U_Network_Appliance/INA2205") },
+          { model: "INA3608", name: "1U Security Server", desc: "14th/13th/12th Core 16GbE+10G for security.", img: img("small_INA3606.png"), url: url("en/product/category/Network_Appliance/Rackmount_Network_Appliance/Mainstream_1U_Network_Appliance/INA3608") },
+          { model: "INA2205", name: "1U Entry", desc: "Intel Atom 8 GbE for compact edge.", img: img("small_INA2205_Preliminary.png"), url: url("en/product/category/Network_Appliance/Rackmount_Network_Appliance/Entry_1U_Network_Appliance/INA2205") },
         ],
       },
     ],
@@ -272,23 +281,23 @@ const productCategories = [
       {
         name: "Module & Carrier",
         products: [
-          { model: "SMARC Module", name: "NXP SMARC Module", desc: "ARM SMARC 2.1 module for low-power systems.", url: url("en/product/category/RISC_Platform/SMARC_Module/NXP_i_MX8M_based_SMARC_Module") },
-          { model: "SMARC Carrier 2.1", name: "SMARC Carrier", desc: "Carrier board for SMARC 2.1 module.", url: url("en/product/category/RISC_Platform/Carrier_Board_for_SMARC_Module/SMARC_2_1_Carrier_Board") },
+          { model: "SMARC Module", name: "NXP SMARC Module", desc: "ARM SMARC 2.1 module for low-power systems.", img: img("small_RM-N95.png"), url: url("en/product/category/RISC_Platform/SMARC_Module/NXP_i_MX8M_based_SMARC_Module") },
+          { model: "SMARC Carrier 2.1", name: "SMARC Carrier", desc: "Carrier board for SMARC 2.1 module.", img: img("small_product_RP_103_1_0.png"), url: url("en/product/category/RISC_Platform/Carrier_Board_for_SMARC_Module/SMARC_2_1_Carrier_Board") },
         ],
       },
       {
         name: "RISC SBC",
         products: [
-          { model: '3.5" RISC SBC', name: "ARM SBC", desc: '3.5" ARM SBC for embedded control.', url: url("en/product/category/RISC_Platform/RISC_based_Single_Board_Computer/3_5_Disk_Size_SBC") },
-          { model: '2.5" RISC SBC', name: "ARM SBC", desc: '2.5" ARM SBC for compact deployments.', url: url("en/product/category/RISC_Platform/RISC_based_Single_Board_Computer/2_5_Disk_Size_SBC") },
-          { model: "Ultra-Compact SBC", name: "ARM SBC", desc: "Ultra-compact ARM for deeply embedded systems.", url: url("en/product/category/RISC_Platform/RISC_based_Single_Board_Computer/Ultra_Compact_Single_Board_Computer") },
+          { model: '3.5" RISC SBC', name: "ARM SBC", desc: '3.5" ARM SBC for embedded control.', img: img("small_IBR500.png"), url: url("en/product/category/RISC_Platform/RISC_based_Single_Board_Computer/3_5_Disk_Size_SBC") },
+          { model: '2.5" RISC SBC', name: "ARM SBC", desc: '2.5" ARM SBC for compact deployments.', img: img("small_IBR300.png"), url: url("en/product/category/RISC_Platform/RISC_based_Single_Board_Computer/2_5_Disk_Size_SBC") },
+          { model: "Ultra-Compact SBC", name: "ARM SBC", desc: "Ultra-compact ARM for deeply embedded systems.", img: img("small_IBR-SMB.png"), url: url("en/product/category/RISC_Platform/RISC_based_Single_Board_Computer/Ultra_Compact_Single_Board_Computer") },
         ],
       },
       {
         name: "ARM System",
         products: [
-          { model: "Edge Computer", name: "RISC Edge System", desc: "ARM edge computer for IoT connectivity.", url: url("en/product/category/RISC_Platform/RISC_based_Edge_Computing_System/Edge_Computer") },
-          { model: "IPR Series", name: "ARM HMI", desc: "ARM-based HMI for operator interfaces.", url: url("en/product/category/RISC_Platform/ARM_based_HMI/IPR_Series_Industrial_HMI") },
+          { model: "Edge Computer", name: "RISC Edge System", desc: "ARM edge computer for IoT connectivity.", img: img("small_ISR500.png"), url: url("en/product/category/RISC_Platform/RISC_based_Edge_Computing_System/Edge_Computer") },
+          { model: "IPR Series", name: "ARM HMI", desc: "ARM-based HMI for operator interfaces.", img: img("small_IPR-P04F-N.jpg"), url: url("en/product/category/RISC_Platform/ARM_based_HMI/IPR_Series_Industrial_HMI") },
         ],
       },
     ],
@@ -364,6 +373,7 @@ function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [formStatus, setFormStatus] = useState("");
   const [navHidden, setNavHidden] = useState(false);
+  const [productCat, setProductCat] = useState("embedded");
 
   function navigate(nextRoute) {
     if (!routes.includes(nextRoute)) {
@@ -386,16 +396,21 @@ function App() {
     event.currentTarget.reset();
   }
 
+  function handleNavigateProduct(catId) {
+    setProductCat(catId);
+    navigate("products");
+  }
+
   const currentPage = useMemo(() => {
     return {
       home: <HomePage navigate={navigate} />,
       about: <AboutPage />,
       services: <ServicesPage />,
       projects: <ProjectsPage />,
-      products: <ProductsPage />,
+      products: <ProductsPage productCat={productCat} />,
       contact: <ContactPage formStatus={formStatus} onSubmit={handleContactSubmit} />,
     }[route];
-  }, [route, formStatus]);
+  }, [route, formStatus, productCat]);
 
   useEffect(() => {
     const syncRoute = () => {
@@ -454,14 +469,14 @@ function App() {
 
   return (
     <>
-      <Header route={route} menuOpen={menuOpen} setMenuOpen={setMenuOpen} navigate={navigate} navHidden={navHidden} showNav={showNav} />
+      <Header route={route} menuOpen={menuOpen} setMenuOpen={setMenuOpen} navigate={navigate} navHidden={navHidden} showNav={showNav} onNavigateProduct={handleNavigateProduct} />
       <main className="page-shell">{currentPage}</main>
       <Footer navigate={navigate} />
     </>
   );
 }
 
-function Header({ route, menuOpen, setMenuOpen, navigate, navHidden, showNav }) {
+function Header({ route, menuOpen, setMenuOpen, navigate, navHidden, showNav, onNavigateProduct }) {
   return (
     <header className={`site-header${navHidden ? " is-hidden" : ""}`}>
       <button className="brand" type="button" onClick={() => navigate("home")} aria-label="SIS home">
@@ -479,16 +494,40 @@ function Header({ route, menuOpen, setMenuOpen, navigate, navHidden, showNav }) 
       </button>
 
       <nav className="nav-panel" aria-label="Primary navigation">
-        {navItems.map((item) => (
-          <button
-            key={item.id}
-            type="button"
-            className={route === item.id ? "nav-link is-active" : "nav-link"}
-            onClick={() => navigate(item.id)}
-          >
-            {item.label}
-          </button>
-        ))}
+        {navItems.map((item) =>
+          item.id === "products" ? (
+            <div key={item.id} className="nav-dropdown">
+              <button
+                type="button"
+                className={route === item.id ? "nav-link is-active" : "nav-link"}
+                onClick={() => navigate(item.id)}
+              >
+                {item.label}
+              </button>
+              <div className="nav-dropdown-menu">
+                {productCatItems.map((cat) => (
+                  <button
+                    key={cat.id}
+                    type="button"
+                    className="nav-dropdown-item"
+                    onClick={() => onNavigateProduct(cat.id)}
+                  >
+                    {cat.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+          ) : (
+            <button
+              key={item.id}
+              type="button"
+              className={route === item.id ? "nav-link is-active" : "nav-link"}
+              onClick={() => navigate(item.id)}
+            >
+              {item.label}
+            </button>
+          )
+        )}
       </nav>
       <button className="top-bar" type="button" onClick={showNav} aria-label="Show navigation" />
     </header>
@@ -644,8 +683,8 @@ function ProjectsPage() {
   );
 }
 
-function ProductsPage() {
-  const [activeCat, setActiveCat] = useState("embedded");
+function ProductsPage({ productCat }) {
+  const [activeCat, setActiveCat] = useState(productCat || "embedded");
   const [failedImgs, setFailedImgs] = useState({});
 
   const handleImgError = (model) => {
@@ -653,6 +692,18 @@ function ProductsPage() {
   };
 
   const active = productCategories.find((c) => c.id === activeCat) || productCategories[0];
+
+  // Sync with external productCat prop (e.g. from nav dropdown)
+  useEffect(() => {
+    if (productCat && productCat !== activeCat) {
+      setActiveCat(productCat);
+    }
+  }, [productCat]);
+
+  // Reset image error state on category switch so images retry loading
+  useEffect(() => {
+    setFailedImgs({});
+  }, [activeCat]);
 
   return (
     <PageFrame
