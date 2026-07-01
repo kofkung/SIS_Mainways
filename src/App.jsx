@@ -455,6 +455,15 @@ function ContactPage({ formStatus, onSubmit }) {
           <p><strong>Siam Infinity Solution Co., Ltd.</strong></p>
           <p>111/2 Ramkhamhaeng 94 Alley, Saphan Sung, Bangkok 10240</p>
           <p>Tel: +66 089 924 3843</p>
+          <div className="contact-map">
+            <iframe
+              src="https://www.google.com/maps?q=111/2+Ramkhamhaeng+94+Alley+Saphan+Sung+Bangkok+10240&output=embed&z=15"
+              allowfullscreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="SIS office location"
+            />
+          </div>
         </div>
         <form className="contact-form reveal" onSubmit={onSubmit}>
           <label>
