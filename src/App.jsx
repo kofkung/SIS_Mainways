@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import logo from "../SiSlogo.jpg";
 import logoWhite from "../assets/sis-logo-white.png";
 import heroGate from "../assets/sis-mrt-fare-gates-hero.jpg";
@@ -98,9 +98,37 @@ const portfolio = [
 const filterTabs = ["All Projects", "Fare Gate", "Station Device", "Integration", "AFC System"];
 const processSteps = ["Planning", "Engineering", "Implementation", "Handover"];
 
-const ibase = "https://www.ibase.com.tw";
-const img = (file) => `${ibase}/uploads/images/products/Small_255x170px/${file}`;
-const url = (path) => `${ibase}/${path}`;
+const groupTaglines = {
+  Motherboard: "Mini-ITX \u00b7 ATX \u00b7 PICO-ITX",
+  "Single Board Computer": "3.5\u2033 \u00b7 2.5\u2033 \u00b7 ARM",
+  "CPU Module": "COM Express \u00b7 Qseven \u00b7 ETX",
+  "CPU Card & Accessories": "Full-size \u00b7 Carrier boards",
+  "AI Computing": "Jetson Orin \u00b7 EPYC",
+  "Edge & IoT": "Gateways \u00b7 Ruggedized",
+  "Embedded System": "Expandable \u00b7 Fanless",
+  "Compact & Mini System": "Palm-sized \u00b7 PICO-ITX",
+  "Panel PC": "Modular \u00b7 Compact \u00b7 Outdoor",
+  "Touch & ODM": "Touch monitors \u00b7 Custom",
+  "Signage Player": "Entry \u00b7 Performance \u00b7 Outdoor",
+  "Video Wall": "Multi-display controllers",
+  "Network Appliance": "1U \u00b7 2U Rackmount",
+  "Railway System": "EN 50155 \u00b7 E-Mark",
+  "Railway HMI": "Cab panels \u00b7 PIS displays",
+  "Module & Carrier": "SMARC 2.1",
+  "RISC SBC": "3.5\u2033 \u00b7 2.5\u2033 \u00b7 Ultra-compact",
+  "ARM System": "Edge \u00b7 HMI",
+};
+
+const categoryBlurbs = {
+  embedded: "Industrial motherboards, SBCs, and CPU modules for 24/7 station operation.",
+  ai: "NVIDIA Jetson and AMD edge platforms for real-time AI inference at stations.",
+  panel: "Operator HMI panels, touch monitors, and sunlight-readable displays.",
+  signage: "Digital signage players, video-wall controllers, and network appliances.",
+  transport: "EN 50155 railway computers and E-Mark in-vehicle AFC systems.",
+  risc: "ARM SMARC modules, RISC single-board computers, and edge systems.",
+};
+
+const img = (file) => `/products/${file}`;
 
 const productCategories = [
   {
@@ -368,6 +396,127 @@ function ServiceIcon({ type }) {
   );
 }
 
+function MegaMenuPanel({ isOpen, onClose, onNavigateProduct, onPanelEnter, onPanelLeave }) {
+  const [activeCatId, setActiveCatId] = useState("embedded");
+  const [activeGroupIdx, setActiveGroupIdx] = useState(0);
+  const [failedImgs, setFailedImgs] = useState({});
+
+  const category = productCategories.find((c) => c.id === activeCatId) || productCategories[0];
+  const group = category.groups[activeGroupIdx] || category.groups[0];
+
+  useEffect(() => { setActiveGroupIdx(0); }, [activeCatId]);
+  useEffect(() => { setFailedImgs({}); }, [activeCatId, activeGroupIdx]);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKey = (e) => { if (e.key === "Escape") onClose(); };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [isOpen, onClose]);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const fn = () => onClose();
+    window.addEventListener("scroll", fn, { passive: true, once: true });
+    return () => window.removeEventListener("scroll", fn);
+  }, [isOpen, onClose]);
+
+  return (
+    <div
+      className={`mega-panel${isOpen ? " is-open" : ""}`}
+      onMouseEnter={onPanelEnter}
+      onMouseLeave={onPanelLeave}
+      aria-hidden={!isOpen}
+      role="dialog"
+      aria-label="Product categories"
+    >
+      <nav className="mega-categories" aria-label="Product categories">
+        <span className="mega-label">Categories</span>
+        {productCategories.map((cat) => (
+          <button
+            key={cat.id}
+            type="button"
+            className={`mega-cat-btn${activeCatId === cat.id ? " is-active" : ""}`}
+            onMouseEnter={() => setActiveCatId(cat.id)}
+            onClick={() => onNavigateProduct(cat.id)}
+          >
+            <span className="mega-cat-dot" aria-hidden="true" />
+            {cat.label}
+          </button>
+        ))}
+        <div className="mega-cat-blurb">
+          <p>{categoryBlurbs[activeCatId]}</p>
+        </div>
+      </nav>
+
+      <div className="mega-groups">
+        <span className="mega-label">{category.label}</span>
+        <div className="mega-group-list">
+          {category.groups.map((g, idx) => (
+            <button
+              key={g.name}
+              type="button"
+              className={`mega-group-btn${activeGroupIdx === idx ? " is-active" : ""}`}
+              onMouseEnter={() => setActiveGroupIdx(idx)}
+              onClick={() => onNavigateProduct(activeCatId)}
+            >
+              <span className="mega-group-bar" aria-hidden="true" />
+              <span className="mega-group-text">
+                <strong>{g.name}</strong>
+                {groupTaglines[g.name] && <small>{groupTaglines[g.name]}</small>}
+              </span>
+              <svg className="mega-group-chevron" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="m9 18 6-6-6-6" />
+              </svg>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className="mega-preview">
+        <span className="mega-label">{group.name}</span>
+        <div className="mega-preview-grid">
+          {group.products.slice(0, 4).map((product) => (
+            <article
+              key={product.model}
+              className="mega-preview-card"
+              onClick={() => onNavigateProduct(activeCatId)}
+              role="button"
+              tabIndex={isOpen ? 0 : -1}
+            >
+              <div className="mega-preview-fig">
+                {product.img && !failedImgs[product.model] ? (
+                  <img
+                    src={product.img}
+                    alt={product.model}
+                    loading="lazy"
+                    onError={() => setFailedImgs((prev) => ({ ...prev, [product.model]: true }))}
+                  />
+                ) : (
+                  <span className="mega-preview-icon">{category.label[0]}</span>
+                )}
+              </div>
+              <div className="mega-preview-body">
+                <strong>{product.model}</strong>
+                <p>{product.desc}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+        <button
+          type="button"
+          className="mega-view-all"
+          onClick={() => onNavigateProduct(activeCatId)}
+          tabIndex={isOpen ? 0 : -1}
+        >
+          View all {category.label}
+          <ArrowIcon />
+        </button>
+      </div>
+    </div>
+  );
+}
+
 function App() {
   const [route, setRoute] = useState(getRouteFromHash);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -477,6 +626,33 @@ function App() {
 }
 
 function Header({ route, menuOpen, setMenuOpen, navigate, navHidden, showNav, onNavigateProduct }) {
+  const [megaOpen, setMegaOpen] = useState(false);
+  const openRef = useRef(null);
+  const closeRef = useRef(null);
+
+  const requestOpen = useCallback(() => {
+    clearTimeout(closeRef.current);
+    openRef.current = setTimeout(() => setMegaOpen(true), 80);
+  }, []);
+
+  const requestClose = useCallback(() => {
+    clearTimeout(openRef.current);
+    closeRef.current = setTimeout(() => setMegaOpen(false), 200);
+  }, []);
+
+  const cancelClose = useCallback(() => {
+    clearTimeout(closeRef.current);
+  }, []);
+
+  const closeMega = useCallback(() => {
+    clearTimeout(openRef.current);
+    clearTimeout(closeRef.current);
+    setMegaOpen(false);
+  }, []);
+
+  useEffect(() => { closeMega(); }, [route, closeMega]);
+  useEffect(() => () => { clearTimeout(openRef.current); clearTimeout(closeRef.current); }, []);
+
   return (
     <header className={`site-header${navHidden ? " is-hidden" : ""}`}>
       <button className="brand" type="button" onClick={() => navigate("home")} aria-label="SIS home">
@@ -496,26 +672,24 @@ function Header({ route, menuOpen, setMenuOpen, navigate, navHidden, showNav, on
       <nav className="nav-panel" aria-label="Primary navigation">
         {navItems.map((item) =>
           item.id === "products" ? (
-            <div key={item.id} className="nav-dropdown">
+            <div
+              key={item.id}
+              className="mega-trigger"
+              onMouseEnter={requestOpen}
+              onMouseLeave={requestClose}
+            >
               <button
                 type="button"
-                className={route === item.id ? "nav-link is-active" : "nav-link"}
-                onClick={() => navigate(item.id)}
+                className={`nav-link${route === item.id || megaOpen ? " is-active" : ""}`}
+                onClick={() => { navigate(item.id); closeMega(); }}
+                aria-expanded={megaOpen}
+                aria-haspopup="dialog"
               >
                 {item.label}
+                <svg className={`mega-caret${megaOpen ? " is-open" : ""}`} viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
               </button>
-              <div className="nav-dropdown-menu">
-                {productCatItems.map((cat) => (
-                  <button
-                    key={cat.id}
-                    type="button"
-                    className="nav-dropdown-item"
-                    onClick={() => onNavigateProduct(cat.id)}
-                  >
-                    {cat.label}
-                  </button>
-                ))}
-              </div>
             </div>
           ) : (
             <button
@@ -529,6 +703,15 @@ function Header({ route, menuOpen, setMenuOpen, navigate, navHidden, showNav, on
           )
         )}
       </nav>
+
+      <MegaMenuPanel
+        isOpen={megaOpen && !menuOpen && !navHidden}
+        onClose={closeMega}
+        onNavigateProduct={(catId) => { onNavigateProduct(catId); closeMega(); }}
+        onPanelEnter={cancelClose}
+        onPanelLeave={requestClose}
+      />
+
       <button className="top-bar" type="button" onClick={showNav} aria-label="Show navigation" />
     </header>
   );
@@ -734,7 +917,7 @@ function ProductsPage({ productCat }) {
             <div className="product-grid">
               {group.products.map((product) => (
                 <article className="product-card reveal" key={product.model}>
-                  <a href={product.url} target="_blank" rel="noopener noreferrer" className="product-card-inner">
+                  <div className="product-card-inner">
                     <div className="product-card-fig">
                       {product.img && !failedImgs[product.model] ? (
                         <img
@@ -749,16 +932,10 @@ function ProductsPage({ productCat }) {
                     </div>
                     <div className="product-card-body">
                       <h3 className="product-model">{product.model}</h3>
+                      <p className="product-name">{product.name}</p>
                       <p className="product-desc">{product.desc}</p>
-                      <span className="product-readmore">
-                        Read More
-                        <svg aria-hidden="true" viewBox="0 0 24 24" width="14" height="14">
-                          <path d="M5 12h13" />
-                          <path d="m13 6 6 6-6 6" />
-                        </svg>
-                      </span>
                     </div>
-                  </a>
+                  </div>
                 </article>
               ))}
             </div>

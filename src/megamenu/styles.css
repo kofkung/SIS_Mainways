@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+/*
+ * Mega Menu design tokens.
+ * White enterprise surfaces with a #1E88E5 blue accent, matching the
+ * iBASE-style navigation UX without copying any proprietary assets.
+ */
+@theme {
+  --color-mm-blue: #1e88e5;
+  --color-mm-blue-strong: #1976d2;
+  --color-mm-blue-soft: #e3f2fd;
+  --color-mm-ink: #0f172a;
+  --color-mm-ink-soft: #475569;
+  --color-mm-muted: #94a3b8;
+  --color-mm-line: #e2e8f0;
+  --color-mm-surface: #ffffff;
+  --color-mm-surface-alt: #f8fafc;
+
+  --shadow-mm: 0 18px 48px -12px rgb(15 23 42 / 0.18), 0 4px 12px -4px rgb(15 23 42 / 0.08);
+  --shadow-mm-trigger: 0 1px 0 0 rgb(15 23 42 / 0.04);
+
+  --font-mm: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+/* Scoped base for the mega-menu so it doesn't fight the host page's body reset. */
+.mm-root,
+.mm-root * {
+  box-sizing: border-box;
+}
+
+.mm-root {
+  font-family: var(--font-mm);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Thin custom scrollbar inside the mega menu lists for a polished feel. */
+.mm-scroll::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.mm-scroll::-webkit-scrollbar-thumb {
+  background: var(--color-mm-line);
+  border-radius: 999px;
+}
+.mm-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
