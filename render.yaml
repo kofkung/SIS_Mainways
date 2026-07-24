@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: sis-mainways
+    runtime: static
+    repo: https://github.com/kofkung/SIS_Mainways
+    branch: main
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    autoDeployTrigger: commit
+    envVars:
+      - key: NODE_VERSION
+        value: 20.18.0
+      - key: PUPPETEER_SKIP_CHROMIUM_DOWNLOAD
+        value: "true"
+      - key: VITE_CONTACT_ENDPOINT
+        value: https://api.web3forms.com/submit
+      - key: VITE_CONTACT_ACCESS_KEY
+        value: a570ef21-9158-4984-9f7d-5918f2244d98
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html

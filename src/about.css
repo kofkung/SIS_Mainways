@@ -1,0 +1,570 @@
+/* ═══════════════════════════════════════════════════════════
+   About Page · Refined Styles (UI/UX Pro Max Blue Atmosphere)
+   ═══════════════════════════════════════════════════════════ */
+
+.about-enhanced {
+  position: relative;
+  width: 100%;
+  overflow-x: clip;
+  font-family: var(--font-body, "Inter", system-ui, sans-serif);
+  color: var(--color-ink, #1a1a2e);
+  padding-top: clamp(72px, 9vh, 110px);
+  background: transparent;
+}
+
+.about-page-container {
+  position: relative;
+  z-index: 1;
+  width: min(1200px, 92%);
+  margin: 0 auto;
+  padding: 24px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.about-section-box {
+  width: 100%;
+}
+
+/* ── Kicker Pill (Blue badge box - scaled up) ── */
+.about-kicker-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: clamp(1rem, 1.3vw, 1.25rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #0071e3;
+  background: linear-gradient(135deg, rgba(0, 113, 227, 0.09), rgba(0, 198, 255, 0.07));
+  padding: 8px 20px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 113, 227, 0.18);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  width: fit-content;
+  box-shadow: 0 2px 8px rgba(0, 113, 227, 0.06);
+}
+
+.about-kicker-pill svg {
+  color: #0071e3;
+}
+
+/* ── Section Title (Subheadings under main section names) ── */
+.about-section-title {
+  font-size: clamp(1.3rem, 1.8vw, 1.55rem);
+  font-weight: 700;
+  color: #1d1d1f;
+  margin: 0 0 14px;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+.about-section-subtitle {
+  font-size: clamp(0.9rem, 1.05vw, 1rem);
+  color: #6e6e73;
+  margin: 0 0 32px;
+  line-height: 1.65;
+  max-width: 600px;
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   BOX 1 · ABOUT SIS — Clean White Card
+   ═══════════════════════════════════════════════════════════ */
+
+.about-hero-split {
+  position: relative;
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid rgba(0, 113, 227, 0.12);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0, 113, 227, 0.05);
+}
+
+.about-hero-split-inner {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 0;
+  align-items: stretch;
+  min-height: 400px;
+}
+
+.about-hero-text-col {
+  padding: clamp(32px, 4vw, 52px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.about-hero-headline {
+  font-size: clamp(1.3rem, 1.8vw, 1.55rem);
+  font-weight: 700;
+  color: #1d1d1f;
+  margin: 0 0 16px;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+.about-hero-paragraphs {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.about-hero-paragraphs p {
+  font-size: clamp(0.9rem, 1vw, 0.98rem);
+  color: #424245;
+  line-height: 1.75;
+  margin: 0;
+}
+
+/* Image column */
+.about-hero-image-col {
+  display: flex;
+  align-items: stretch;
+}
+
+.about-hero-image-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.about-hero-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   BOX 2 · OUR EXPERTISE — Clean White Card
+   ═══════════════════════════════════════════════════════════ */
+
+.about-expertise-section {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid rgba(0, 113, 227, 0.12);
+  border-radius: 20px;
+  padding: clamp(28px, 4vw, 44px);
+  box-shadow: 0 4px 24px rgba(0, 113, 227, 0.05);
+}
+
+.about-expertise-header {
+  margin-bottom: 4px;
+}
+
+.about-expertise-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px;
+}
+
+.about-expertise-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 16px;
+  border-radius: 12px;
+  border-bottom: 1px solid rgba(0, 113, 227, 0.06);
+  transition: all 0.25s ease;
+}
+
+.about-expertise-item:hover {
+  background: rgba(0, 113, 227, 0.04);
+  border-color: rgba(0, 113, 227, 0.14);
+  transform: translateX(4px);
+}
+
+/* Alternate column offset for visual rhythm */
+.about-expertise-item:nth-child(odd) {
+  padding-right: 24px;
+}
+
+.about-expertise-item:nth-child(even) {
+  padding-left: 24px;
+}
+
+.about-expertise-icon-ring {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 113, 227, 0.08);
+  color: #0071e3;
+  flex-shrink: 0;
+  border: 1px solid rgba(0, 113, 227, 0.12);
+}
+
+.about-expertise-label {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #1d1d1f;
+  line-height: 1.35;
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   BOX 3 · PROJECT EXPERIENCE — Clean White Card
+   ═══════════════════════════════════════════════════════════ */
+
+.about-experience-section {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid rgba(0, 113, 227, 0.12);
+  border-radius: 20px;
+  padding: clamp(28px, 4vw, 48px);
+  box-shadow: 0 4px 24px rgba(0, 113, 227, 0.05);
+  overflow: hidden;
+}
+
+.about-experience-inner {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: clamp(24px, 3vw, 44px);
+  align-items: center;
+}
+
+.about-experience-visual {
+  position: relative;
+  height: 100%;
+  min-height: 340px;
+}
+
+.about-experience-img-main {
+  width: 88%;
+  aspect-ratio: 4 / 3;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 113, 227, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.8);
+}
+
+.about-experience-img-main img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.about-experience-img-float {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 55%;
+  aspect-ratio: 4 / 3;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 113, 227, 0.12);
+  border: 3px solid #ffffff;
+  z-index: 2;
+}
+
+.about-experience-img-float img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.about-experience-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-experience-paragraphs {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.about-experience-paragraphs p {
+  font-size: clamp(0.9rem, 1.02vw, 0.98rem);
+  color: #424245;
+  line-height: 1.75;
+  margin: 0;
+}
+
+.about-experience-stats {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding-top: 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.about-experience-stat {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 10px;
+}
+
+.about-experience-stat svg {
+  color: #0071e3;
+  flex-shrink: 0;
+}
+
+.about-experience-stat div {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.about-experience-stat strong {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #1d1d1f;
+  letter-spacing: -0.02em;
+}
+
+.about-experience-stat span {
+  font-size: 0.7rem;
+  color: #6e6e73;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   OUR COMMITMENT — Liquid Ice Glass
+   ═══════════════════════════════════════════════════════════ */
+
+.about-commitment-glass {
+  position: relative;
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid rgba(0, 113, 227, 0.12);
+  border-radius: 20px;
+  padding: clamp(32px, 4.5vw, 48px);
+  box-shadow: 0 4px 24px rgba(0, 113, 227, 0.05);
+  overflow: hidden;
+}
+
+.about-commitment-glass::before {
+  display: none;
+}
+
+.about-commitment-content {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 20px;
+}
+
+.about-commitment-desc {
+  font-size: clamp(0.92rem, 1.08vw, 1.02rem);
+  color: #3a3a3d;
+  line-height: 1.75;
+  margin: 0;
+  max-width: 740px;
+}
+
+.about-commitment-tags {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.about-commitment-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 16px;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 8px;
+  color: #1d1d1f;
+  font-size: 0.82rem;
+  font-weight: 600;
+  transition: background 0.2s ease;
+  cursor: default;
+}
+
+.about-commitment-chip svg {
+  color: #0071e3;
+  flex-shrink: 0;
+}
+
+.about-commitment-chip:hover {
+  background: rgba(255, 255, 255, 0.85);
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   CTA (preserved)
+   ═══════════════════════════════════════════════════════════ */
+
+.about-cta-section {
+  width: 100vw;
+  min-height: clamp(420px, 46vh, 520px);
+  display: grid;
+  place-items: center;
+  margin-left: calc(50% - 50vw);
+  padding: clamp(5.5rem, 9vw, 8rem) var(--space-lg, 24px);
+  box-sizing: border-box;
+  background: linear-gradient(180deg, #ffffff 0%, #f4f5f8 100%);
+  border-top: 1px solid var(--color-line, rgba(0, 0, 0, 0.08));
+  text-align: center;
+}
+
+.about-cta-content {
+  width: min(920px, 100%);
+  margin: 0 auto;
+}
+
+.about-cta-content h2 {
+  margin: 0 0 var(--space-md, 16px);
+  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+  font-weight: 700;
+  color: var(--color-ink, #1d1d1f);
+  letter-spacing: -0.02em;
+}
+
+.about-cta-content > p {
+  margin: 0 0 var(--space-xl, 32px);
+  font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+  line-height: 1.7;
+  color: var(--color-ink-soft, #6e6e73);
+  white-space: normal;
+  text-wrap: balance;
+}
+
+.about-cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 32px;
+  background: var(--gradient-primary, linear-gradient(135deg, #0071e3, #0077ed));
+  color: #ffffff;
+  font-size: 0.98rem;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 4px 20px rgba(0, 113, 227, 0.25);
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.19, 1, 0.22, 1), box-shadow 0.2s ease;
+}
+
+.about-cta-button:hover {
+  box-shadow: 0 6px 28px rgba(0, 113, 227, 0.35);
+  transform: translateY(-2px);
+}
+
+.about-cta-button:focus-visible {
+  outline: 3px solid rgba(0, 113, 227, 0.34);
+  outline-offset: 4px;
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   Customer Logo Overrides (preserved)
+   ═══════════════════════════════════════════════════════════ */
+
+.about-customers-wrapper {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 auto !important;
+  padding: 0 0 48px !important;
+  box-sizing: border-box !important;
+  background: transparent !important;
+}
+
+.about-customers-wrapper .customers-heading {
+  padding: 0 !important;
+  margin-bottom: 24px !important;
+}
+
+.about-customers-wrapper .customers-heading h2 {
+  font-size: clamp(1.8rem, 2.8vw, 2.5rem);
+}
+
+.about-customers-wrapper .customer-marquee-track {
+  animation: customer-logo-slide 35s linear infinite !important;
+  animation-play-state: running;
+}
+
+.about-customers-wrapper .customer-marquee:hover .customer-marquee-track {
+  animation-play-state: paused !important;
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════════ */
+
+@media (max-width: 900px) {
+  .about-hero-split-inner {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .about-hero-image-col {
+    max-height: 260px;
+  }
+
+  .about-expertise-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-expertise-item:nth-child(odd) {
+    padding-right: 4px;
+    border-right: none;
+  }
+
+  .about-expertise-item:nth-child(even) {
+    padding-left: 4px;
+  }
+
+  .about-experience-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .about-experience-visual {
+    min-height: 260px;
+    order: -1;
+  }
+
+  .about-experience-img-main {
+    width: 75%;
+  }
+
+  .about-experience-img-float {
+    width: 50%;
+  }
+}
+
+@media (max-width: 600px) {
+  .about-page-container {
+    gap: 36px;
+  }
+
+  .about-experience-stats {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .about-commitment-tags {
+    flex-direction: column;
+  }
+
+  .about-cta-section {
+    min-height: 390px;
+    padding: 5rem var(--space-lg, 24px);
+  }
+}

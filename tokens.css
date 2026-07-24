@@ -1,0 +1,138 @@
+/* Hallmark · genre: modern-minimal · macrostructure: Narrative Workflow · theme: studied-DNA (source: existing SIS MRT home) · nav: N1b · footer: Ft1 */
+@font-face {
+  font-family: "Thai Sans Neue";
+  src: url("./assets/fonts/ThaiSansNeue/ThaiSansNeue-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Thai Sans Neue";
+  src: url("./assets/fonts/ThaiSansNeue/ThaiSansNeue-SemiBold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Thai Sans Neue";
+  src: url("./assets/fonts/ThaiSansNeue/ThaiSansNeue-Bold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Thai Sans Neue";
+  src: url("./assets/fonts/ThaiSansNeue/ThaiSansNeue-ExtraBold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 800 900;
+  font-display: swap;
+}
+
+:root {
+  --font-body: "CoFo Sans", Aptos, "Segoe UI Variable", "Segoe UI", "Noto Sans Thai", "Thai Sans Neue", sans-serif;
+  --font-display: "CoFo Sans", Aptos, "Segoe UI Variable", "Segoe UI", "Noto Sans Thai", "Thai Sans Neue", sans-serif;
+
+  /* ── Page backgrounds ── */
+  --color-page: #ebf4ff;
+  --color-page-2: #e0effe;
+  --color-surface: #ebf4ff;
+  --color-surface-strong: #e0effe;
+  --color-surface-soft: rgba(0, 113, 227, 0.04);
+  --color-paper: #ffffff;
+  --color-paper-2: #f8fafc;
+
+  /* ── Ink / text ── */
+  --color-ink: oklch(24% 0.018 255);
+  --color-ink-soft: oklch(49% 0.018 255);
+  --color-muted: oklch(58% 0.014 255);
+  --color-dark-ink: oklch(24% 0.018 255);
+  --color-dark-soft: oklch(49% 0.018 255);
+
+  /* ── Borders & lines ── */
+  --color-line: oklch(24% 0.018 255 / 10%);
+  --color-line-strong: oklch(24% 0.018 255 / 18%);
+
+  /* ── Glass / overlay ── */
+  --color-glass: rgba(255, 255, 255, 0.72);
+  --color-glass-strong: rgba(255, 255, 255, 0.88);
+
+  /* ── Accent colors (Apple-inspired deep blue) ── */
+  --color-blue: oklch(57% 0.205 255);
+  --color-blue-strong: oklch(52% 0.205 255);
+  --color-cyan: oklch(57% 0.205 255);
+  --color-accent: var(--color-blue);
+  --color-accent-ink: oklch(99.4% 0.005 250);
+  --color-green: oklch(78% 0.175 148);
+  --color-focus: rgba(0, 113, 227, 0.4);
+
+  /* ── Gradients ── */
+  --gradient-page: #ebf4ff;
+  --gradient-hero: linear-gradient(90deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.40) 30%, rgba(0,0,0,0.15) 60%, transparent 100%);
+  --gradient-card: linear-gradient(180deg, #ffffff, #f9f9fb);
+  --gradient-glass: linear-gradient(145deg, rgba(255,255,255,0.92), rgba(255,255,255,0.72));
+  --gradient-primary: linear-gradient(135deg, #0071e3, #0077ed);
+  --gradient-light: linear-gradient(180deg, #ffffff, #f5f5f7);
+
+  /* ── Shadows (subtle for white theme) ── */
+  --shadow-soft: 0 4px 24px rgba(0, 0, 0, 0.06);
+  --shadow-lift: 0 8px 40px rgba(0, 0, 0, 0.10);
+  --shadow-blue: 0 4px 20px rgba(0, 113, 227, 0.20);
+  --shadow-inner: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+
+  /* ── Radii ── */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-pill: 999px;
+
+  /* ── Spacing ── */
+  --space-2xs: 4px;
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 72px;
+  --space-4xl: 104px;
+
+  /* ── Type scale ── */
+  --text-2xs: 0.68rem;
+  --text-xs: 0.75rem;
+  --text-sm: 0.88rem;
+  --text-md: 1rem;
+  --text-lg: 1.15rem;
+  --text-xl: 1.42rem;
+  --text-2xl: 2.05rem;
+  --text-3xl: 3.3rem;
+  --text-4xl: 3.62rem;
+
+  /* ── Motion ── */
+  --ease-out: cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 160ms;
+  --dur-med: 300ms;
+  --dur-slow: 700ms;
+  --rule-thin: 1px;
+  --rule-medium: 2px;
+
+  /* Production UI surfaces */
+  --color-rule: oklch(24% 0.018 255 / 11%);
+  --color-rule-on-dark: oklch(98% 0.008 250 / 16%);
+  --color-accent-soft: oklch(57% 0.205 255 / 8%);
+  --color-header: oklch(99.4% 0.005 250 / 96%);
+  --color-dot-muted: oklch(24% 0.018 255 / 30%);
+  --color-footer-muted: oklch(78% 0.01 250);
+  --shadow-hero-panel: 0 12px 32px oklch(13% 0.03 255 / 14%);
+  --content-wide: 1160px;
+
+  /* ── Footer (dark) ── */
+  --footer-bg: #1d1d1f;
+  --footer-ink: #f5f5f7;
+  --footer-ink-soft: #86868b;
+}

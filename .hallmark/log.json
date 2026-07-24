@@ -1,0 +1,37 @@
+[
+  {
+    "date": "2026-07-23",
+    "macrostructure": "Editorial Service Index",
+    "theme": "quiet SIS white and blue",
+    "enrichment": "technical line icons, typographic hierarchy, and restrained dividers",
+    "brief": "Distill the home service scope into a clean responsive index without card containers or decorative noise"
+  },
+  {
+    "date": "2026-07-18",
+    "macrostructure": "Narrative Workflow",
+    "theme": "studied-DNA from existing SIS MRT home",
+    "enrichment": "existing MRT hero and fare-gate photography",
+    "brief": "Retain the SIS white-blue MRT theme while bringing Home and shared chrome to a restrained production-company standard"
+  },
+  {
+    "date": "2026-06-26",
+    "macrostructure": "Cinematic Transit Portfolio",
+    "theme": "studied-DNA from user screenshot",
+    "enrichment": "generated MRT fare gate hero and section imagery",
+    "brief": "Match the user's dark premium MRT gate website reference"
+  },
+  {
+    "date": "2026-06-25",
+    "macrostructure": "Technical Portfolio",
+    "theme": "custom",
+    "enrichment": "service archive imagery",
+    "brief": "React redesign for SIS MRT fare gate company site"
+  },
+  {
+    "date": "2026-06-26",
+    "macrostructure": "Liquid Rail Portfolio",
+    "theme": "blue navy liquid glass",
+    "enrichment": "service archive imagery with fare gate glass panels",
+    "brief": "Polish SIS site with CoFo Sans stack, blue/navy/white glass design, and stronger hover states"
+  }
+]

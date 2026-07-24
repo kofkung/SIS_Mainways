@@ -1,0 +1,16 @@
+{
+  "scanned_at": "2026-07-18",
+  "scope": "home-page-redesign",
+  "framework": "React 19 with Vite 7",
+  "font_stack": "CoFo Sans-first with Aptos, Segoe UI, Noto Sans Thai and bundled Thai Sans Neue fallbacks",
+  "palette": "Existing SIS cool white, ink and deep-blue custom properties in tokens.css",
+  "motion": "motion 12 is installed and used",
+  "spacing": "Existing named 4px-based --space-* scale",
+  "preserve": [
+    "SIS branding",
+    "existing routes and content intent",
+    "Thai and Latin font support",
+    "blue-white palette",
+    "named spacing and motion tokens"
+  ]
+}
